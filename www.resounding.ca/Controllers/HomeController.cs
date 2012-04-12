@@ -13,6 +13,7 @@ namespace www.resounding.ca.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Resounding Software: Home Page";
             return View();
         }
 
