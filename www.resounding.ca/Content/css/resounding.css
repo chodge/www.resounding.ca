@@ -1,0 +1,92 @@
+﻿.menu
+{
+    margin-top: 25px;
+}
+.links a,.links a img, .links a h1
+{
+    display: block;
+}
+.links img
+{
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.links a h1
+{
+    text-align: center;
+    color: #000000 ;
+    font-size: 48px;
+}
+.links a:hover
+{
+    text-decoration: none;
+}
+.links a
+{
+    border: solid 1px transparent;
+}
+.links .devices a:hover
+{
+    border-color: #00137f;
+}
+.links .processes a:hover
+{
+    border-color: #007f0e;
+}
+.links .performance a:hover
+{
+    border-color: #ff0000;
+}
+
+.links .devices a:hover h1, #devices h1
+{
+    color: #00137f;
+}
+.links .processes a:hover h1, #processes h1
+{
+    color: #007f0e;
+}   
+.links .performance a:hover h1, #performance h1
+{
+    color: #ff0000
+}
+section, .links
+{
+    margin-top: 50px;
+}
+/* phone */
+@media (max-width: 767px) 
+{
+    .links img
+    {
+        width: 100px;
+        height: 100px;    
+    }
+    .links a
+    {
+        width: 125px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25px;
+    }
+    .links a h1
+    {
+        font-size: 20px;
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 979px) 
+{
+    .links img
+    {
+        width: 200px;
+        height: 200px;    
+    }
+    .links a h1
+    {
+        font-size: 36px;
+    }
+}
