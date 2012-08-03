@@ -40,9 +40,9 @@
         <div class="page-header">
             <h1>Resounding Software </h1>
         </div>
-        <div class="row-fluid menu">
-            <div class="span3">
-                <a class="btn btn-large btn-success" href="http://resoundingsoftware.wordpress.com">Visit our Blog</a>
+        <div class="row menu">
+            <div class="span3 offset1">
+                <a class="btn btn-large btn-warning" href="http://resoundingsoftware.wordpress.com">Visit our Blog</a>
             </div>
             <div class="span3">
                 <a class="btn btn-large btn-info" href="http://apps.resounding.ca">See our Apps</a>
@@ -50,8 +50,8 @@
             <div class="span3">
                 <a class="btn btn-large btn-danger" href="http://tourney.resounding.ca">Take a Tour</a>
             </div>
-            <div class="span3">
-                <a class="btn btn-large btn-warning" href="mailto:cliffe@resounding.ca">Contact Us</a>
+            <div class="span2">
+                <a class="btn btn-large btn-success" href="mailto:cliffe@resounding.ca">Contact Us</a>
             </div>
         </div>
         <div class="row-fluid links">
@@ -102,6 +102,13 @@
             <p>The Internet moves quickly. We're up to date with the latest trends and techniques that
             will ensure your sites perform well and utilize the best that the web has to offer.</p>
         </section>
+
+        <footer>
+            <p>
+                Copyright (c) 2012 Resounding Software
+                <a href="mailto:cliffe@resounding.ca">cliffe@resounding.ca</a>
+            </p>
+        </footer>
     </div>
 
     <script type="text/javascript">
@@ -115,20 +122,12 @@
             img.attr('src', img.attr('src').replace('-hover', ''));
         };
 
-        $('.links a>img')
+        $('.links a')
             .mouseenter(function() {
-                enter($(this));
+                enter($('img', this));
             })
             .mouseleave(function() {
-                leave($(this));
-            });
-
-        $('.links a>h1')
-            .mouseenter(function() {
-                enter($(this).siblings('img'));
-            })
-            .mouseleave(function() {
-                leave($(this).siblings('img'));
+                leave($('img', this));
             });
     });    
     </script>

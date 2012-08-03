@@ -1,6 +1,15 @@
-﻿.menu
+﻿.page-header, .links
 {
-    margin-top: 25px;
+    border-bottom: solid 10px #ce3000;
+}
+.links
+{
+    padding-bottom: 25px;
+}
+.menu
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .links a,.links a img, .links a h1
 {
@@ -25,7 +34,9 @@
 }
 .links a
 {
-    border: solid 1px transparent;
+    border: solid 5px transparent;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 .links .devices a:hover
 {
@@ -37,7 +48,7 @@
 }
 .links .performance a:hover
 {
-    border-color: #ff0000;
+    border-color: #ffd700;
 }
 
 .links .devices a:hover h1, #devices h1
@@ -50,12 +61,19 @@
 }   
 .links .performance a:hover h1, #performance h1
 {
-    color: #ff0000
+    color: #ffd700;
 }
-section, .links
+section, .links, footer
 {
     margin-top: 50px;
 }
+footer p
+{
+    border-top: solid 10px #ce3000;
+    text-align: center;
+    padding-top: 25px;
+}
+#devices h1, #processes h1, #performance h1 { color: #ce3000; }
 /* phone */
 @media (max-width: 767px) 
 {
