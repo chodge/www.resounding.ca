@@ -42,34 +42,34 @@
         </div>
         <div class="row menu">
             <div class="span3 offset1">
-                <a class="btn btn-large btn-warning" href="http://resoundingsoftware.wordpress.com">Visit our Blog</a>
+                <a href="http://resoundingsoftware.wordpress.com">Visit our Blog</a>
             </div>
             <div class="span3">
-                <a class="btn btn-large btn-info" href="http://apps.resounding.ca">See our Apps</a>
+                <a href="http://apps.resounding.ca">See our Apps</a>
             </div>
             <div class="span3">
-                <a class="btn btn-large btn-danger" href="http://tourney.resounding.ca">Take a Tour</a>
+                <a href="http://tourney.resounding.ca">Take a Tour</a>
             </div>
             <div class="span2">
-                <a class="btn btn-large btn-success" href="mailto:cliffe@resounding.ca">Contact Us</a>
+                <a href="mailto:cliffe@resounding.ca">Contact Us</a>
             </div>
         </div>
         <div class="row-fluid links">
             <div class="span4 devices">
                 <a href="#devices">
-                    <img src="../../Content/img/smartphone.png" alt="Devices" />
+                    <div class="img"></div>
                     <h1>Devices</h1>
                 </a>
             </div>
             <div class="span4 processes">
                 <a href="#processes">
-                    <img src="../../Content/img/gears.png" alt="Processes" />
+                    <div class="img"></div>
                     <h1>Processes</h1>
                 </a>
             </div>
             <div class="span4 performance">
                 <a href="#performance">
-                    <img src="../../Content/img/racecar.png" alt="Performance" />
+                    <div class="img"></div>
                     <h1>Performance</h1>
                 </a>
             </div>
@@ -124,10 +124,12 @@
 
         $('.links a')
             .mouseenter(function() {
-                enter($('img', this));
+                //enter($('img', this));
+                $('div', this).addClass('hover');
             })
             .mouseleave(function() {
-                leave($('img', this));
+                //leave($('img', this));
+                $('div', this).removeClass('hover');
             });
     });    
     </script>

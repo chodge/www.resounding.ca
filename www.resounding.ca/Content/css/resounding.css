@@ -11,6 +11,23 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.menu a
+{
+    display: block;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 13pt;
+    background-color: #ce3000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .links a,.links a img, .links a h1
 {
     display: block;
@@ -37,6 +54,9 @@
     border: solid 5px transparent;
     padding-bottom: 10px;
     padding-top: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 .links .devices a:hover
 {
@@ -50,10 +70,42 @@
 {
     border-color: #ffd700;
 }
-
 .links .devices a:hover h1, #devices h1
 {
     color: #00137f;
+}
+.links div.img
+{
+    background-image: url("../img/links.png");
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.links .devices div.img
+{
+    background-position: 0 0;
+}
+.links .devices div.hover
+{
+    background-position: -250px 0;
+}
+.links .processes div.img
+{
+    background-position: 0 -250px
+}
+.links .processes div.hover
+{
+    background-position: -250px -250px;
+}
+.links .performance div.img
+{
+    background-position: 0 -500px
+}
+.links .performance div.hover
+{
+    background-position: -250px -500px;
 }
 .links .processes a:hover h1, #processes h1
 {
@@ -77,10 +129,52 @@ footer p
 /* phone */
 @media (max-width: 767px) 
 {
-    .links img
+    .menu
+    {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .menu a
+    {
+        font-size: 11pt;
+        width: 100px;
+    }
+    .links
+    {
+        margin-top: 0;
+    }
+    .links a
+    {
+        margin-bottom: 0;
+    }
+    .links div.img
     {
         width: 100px;
         height: 100px;    
+    }
+    .links .devices div.img
+    {
+        background-position: -500px 0;
+    }
+    .links .devices div.hover
+    {
+        background-position: -600px 0;
+    }
+    .links .processes div.img
+    {
+        background-position: -500px -100px
+    }
+    .links .processes div.hover
+    {
+        background-position: -600px -100px;
+    }
+    .links .performance div.img
+    {
+        background-position: -500px -200px
+    }
+    .links .performance div.hover
+    {
+        background-position: -600px -200px;
     }
     .links a
     {
@@ -98,10 +192,34 @@ footer p
 /* tablet */
 @media (min-width: 768px) and (max-width: 979px) 
 {
-    .links img
+    .links div.img
     {
         width: 200px;
         height: 200px;    
+    }
+    .links .devices div.img
+    {
+        background-position: -700px 0;
+    }
+    .links .devices div.hover
+    {
+        background-position: -900px 0;
+    }
+    .links .processes div.img
+    {
+        background-position: -700px -200px
+    }
+    .links .processes div.hover
+    {
+        background-position: -900px -200px;
+    }
+    .links .performance div.img
+    {
+        background-position: -700px -400px
+    }
+    .links .performance div.hover
+    {
+        background-position: -900px -400px;
     }
     .links a h1
     {
