@@ -125,7 +125,37 @@ footer p
     text-align: center;
     padding-top: 25px;
 }
-#devices h1, #processes h1, #performance h1 { color: #ce3000; }
+
+/* Canal Route Page */
+.canal-route .img 
+{
+    width: 200px;
+    height: 200px;
+    background-image: url("../img/canal-route-med.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.canal-route .labels .img
+{
+    background-position: -400px 0;
+}
+.canal-route .labels .hover
+{
+    background-position: -600px 0;
+}
+.canal-route .icons .img
+{
+    background-position: 0 0;
+}
+.canal-route .icons .hover
+{
+    background-position: -200px 0;
+}
+/* end Canal Route Page */
+
+#devices h1, #processes h1, #performance h1, #labels h1, #icons h1 { color: #ce3000; }
 /* phone */
 @media (max-width: 767px) 
 {

@@ -1,0 +1,77 @@
+﻿@model Resounding.Tournaments.Models.TeamsViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Website for Resounding Software. We build resounding success." />
+    <meta name="keywords" content="Software Development,Resounding Software" />
+
+    <title>Resounding Tournaments Teams</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+
+    <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap.css" />
+    <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap-responsive.css" />
+    <link rel="Stylesheet" type="text/css" href="/Content/css/resounding.css" />
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30184511-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>@Model.TournamentName<small>&nbsp;Building software for your business.</small></h1>
+        </div>
+        
+        <div id="teams">            
+        @foreach (var team in Model.Teams) {
+            <div id="team-@team.Id" class="row-fluid">
+                <a class="team" href="Tournaments/Teams/@team.Id">
+                    @team.Name
+                    <span class="caret" style="visibility: hidden;"></span>
+                </a>
+            </div>
+        }
+        </div>
+        
+    </div>
+
+    <script src="../../../../Content/js/require.js"></script>
+    <script>
+    require.config({
+        baseUrl: '/Content/js',
+        shim: {
+            backbone: {
+                deps: ['underscore', 'jquery'],
+                exports: 'Backbone'
+            },
+            underscore: {
+                exports: '_'
+            }
+        }
+    });
+    require(['teams/tournament_application'], function (Application) {
+        //debugger;
+        var app = new Application();
+        app.initialize();
+    });
+    </script>
+</body>
+</html>
