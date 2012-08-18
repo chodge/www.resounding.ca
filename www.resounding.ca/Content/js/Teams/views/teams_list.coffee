@@ -1,21 +1,23 @@
 define [
-	'chaplin',
-	'teams/views/team_detail'
-], (Chaplin, TeamView) ->
+	'backbone.marionette',
+	'teams/models/teams',
+	'teams/views/team_detail',
+], (Marionette, TeamCollection, DetailView) ->
 	'use strict'
 
-	class View extends Chaplin.CollectionView
+	class View extends Marionette.CollectionView
+
+		itemView: DetailView
 
 		initialize: ->
+			@collection = new TeamCollection
 			@setElement '#teams'
-			@modelBind 'reset', @render
-			super
+			@bindTo @collection, 'reset', @render
+			@collection.fetch(
+				success: =>
+					@collection.each (item) ->
+						item.Players.trigger 'reset'
+			)
 
-		getView: (item) ->
-			new TeamView model: item
-
-		render: ->
-			super
-
-		renderAndInsertItem: (item, index) ->
-      		view = @renderItem item
+		closeChildren: ->
+			

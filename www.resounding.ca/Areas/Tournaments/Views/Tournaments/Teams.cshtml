@@ -17,6 +17,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/bootstrap-collapse.js"></script>
+
     <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap-responsive.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/resounding.css" />
@@ -67,10 +71,9 @@
             }
         }
     });
-    require(['teams/tournament_application'], function (Application) {
+    require(['teams/tournament_application'], function (app) {
         //debugger;
-        var app = new Application();
-        app.initialize();
+        app.start();
     });
     </script>
 </body>

@@ -10,7 +10,7 @@ namespace Resounding.Tournaments.Api
         public ICollection<Team> Get()
         {
             var context = new TournamentsContext();
-            var teams = context.Teams.OrderBy(t => t.Name).ToList();
+            var teams = context.Teams.Include("Players").OrderBy(t => t.Name).ToList();
             return teams;
         }
     }

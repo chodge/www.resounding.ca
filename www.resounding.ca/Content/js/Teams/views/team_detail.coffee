@@ -1,29 +1,21 @@
 define [
-	'teams/views/base/view',
+	'backbone.marionette',
+	'teams/views/players_list',
 	'text!teams/templates/teamViews.html'
-], (View, html) ->
+], (Marionette, PlayersList, html) ->
 	'use strict'
 
-	template = $(html).find('#team-detail').html()
+	tmplHtml = $(html).find('#team-detail').html()
 
-	class View extends View
-		template: template
-
-		autoRender: true
+	class View extends Marionette.ItemView
+		template: _.template(tmplHtml)
 
 		initialize: ->
 			@setElement "#team-#{@model.id}"
-			super
-
+		
 		render: ->
-			return false if @disposed
-
-			templateFunc = @getTemplateFunction()
-			data = @getTemplateData()
-			html = templateFunc data
-			@$el.html(html)
-
-			this
-
-
+			super
 			
+			new PlayersList 
+				collection: @model.Players
+				el: @$('.players')

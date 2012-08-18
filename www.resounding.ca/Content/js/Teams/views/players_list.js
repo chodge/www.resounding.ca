@@ -2,11 +2,10 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['backbone.marionette', 'teams/views/players_list', 'text!teams/templates/teamViews.html'], function(Marionette, PlayersList, html) {
+  define(['underscore', 'backbone.marionette', 'teams/views/player_detail'], function(_, Marionette, DetailView) {
     'use strict';
 
-    var View, tmplHtml;
-    tmplHtml = $(html).find('#team-detail').html();
+    var View;
     return View = (function(_super) {
 
       __extends(View, _super);
@@ -15,23 +14,18 @@
         return View.__super__.constructor.apply(this, arguments);
       }
 
-      View.prototype.template = _.template(tmplHtml);
+      View.prototype.itemView = DetailView;
 
       View.prototype.initialize = function() {
-        return this.setElement("#team-" + this.model.id);
-      };
-
-      View.prototype.render = function() {
-        View.__super__.render.apply(this, arguments);
-        return new PlayersList({
-          collection: this.model.Players,
-          el: this.$('.players')
-        });
+        var _ref;
+        this.children = (_ref = this.children) != null ? _ref : [];
+        View.__super__.initialize.apply(this, arguments);
+        return this.render();
       };
 
       return View;
 
-    })(Marionette.ItemView);
+    })(Marionette.CollectionView);
   });
 
 }).call(this);

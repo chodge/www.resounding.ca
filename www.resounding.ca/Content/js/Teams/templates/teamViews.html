@@ -1,8 +1,15 @@
 <div>
 	<div id="team-detail">
-		<a class="team" href="Tournaments/Teams/{{= Id }}">
+		<a class="team" href="#Tournaments/Teams/{{= Id }}" data-toggle="collapse" data-target="#team-{{= Id }} .details">
             {{= Name }}
             <span class="caret"></span>
         </a>
+        <div class="details collapse">
+            <div class="players"></div>
+        </div>
 	</div>
+
+    <div id="player-detail">
+        <div>{{= Name }}</div>
+    </div>
 </div>

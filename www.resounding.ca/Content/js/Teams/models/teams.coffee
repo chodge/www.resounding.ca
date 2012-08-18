@@ -1,16 +1,15 @@
 define [
-	'chaplin',
+	'backbone',
 	'teams/models/team'
-], (Chaplin, Team) ->
+], (Backbone, Team) ->
 	'use strict'
 
-	class Teams extends Chaplin.Collection
+	class Teams extends Backbone.Collection
 
 		model: Team
 
 		initialize: ->
-			super
 
 			@fetch()
 
-		url: '/Tournaments/api/teams'			
+		url: '/Tournaments/api/teams'
