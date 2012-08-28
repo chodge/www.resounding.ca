@@ -5,11 +5,16 @@ define [
 ], (_, Marionette, html) ->
 	'use strict'
 
-	tmplHtml = $(html).find('#player-detail').html()
+	readOnlyHtml = $(html).find('#player-detail-readonly').html()
+	editHtml = $(html).find('#player-detail-editable').html()
 
 	class View extends Marionette.ItemView
-		template: _.template(tmplHtml)
-
 		initialize: ->
 			super
+			tmpl = if @model.get('Permissions').U then editHtml else readOnlyHtml
+			@template = _.template(tmpl)
 			@render()
+
+		render: ->
+			super
+			if @model.get('Permissions').R then @$el.show() else @$el.hide()

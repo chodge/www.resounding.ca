@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>www.resounding.ca</RootNamespace>
+    <RootNamespace>Resounding.Tournaments</RootNamespace>
     <AssemblyName>www.resounding.ca</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -47,6 +47,9 @@
     <Compile Include="Areas\Tournaments\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\Tournaments\Models\Initializer.cs" />
+    <Compile Include="Areas\Tournaments\Models\Maps\PlayerMap.cs" />
+    <Compile Include="Areas\Tournaments\Models\Maps\TeamMap.cs" />
+    <Compile Include="Areas\Tournaments\Models\Permissions.cs" />
     <Compile Include="Areas\Tournaments\Models\Player.cs" />
     <Compile Include="Areas\Tournaments\Models\Team.cs" />
     <Compile Include="Areas\Tournaments\Models\TeamsViewModel.cs" />
@@ -69,6 +72,7 @@
     <Content Include="Content\css\bootstrap-responsive.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\tournament.css" />
     <Content Include="Content\img\box.png" />
     <Content Include="Content\img\canal-route.png" />
     <Content Include="Content\img\elements.png" />
@@ -82,7 +86,6 @@
     <Content Include="Content\img\email.png" />
     <Content Include="Content\js\backbone.js" />
     <Content Include="Content\js\backbone.marionette.js" />
-    <Content Include="Content\js\bootstrap-modal.js" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\css\resounding.css" />
@@ -113,6 +116,9 @@
     </Content>
     <Content Include="Content\js\Teams\views\player_detail.js">
       <DependentUpon>player_detail.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Teams\views\role_selector.js">
+      <DependentUpon>role_selector.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\Teams\views\teams_list.coffee" />
     <Content Include="Content\js\Teams\views\teams_list.js">
@@ -273,6 +279,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\Teams\views\player_detail.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\js\Teams\views\role_selector.coffee" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

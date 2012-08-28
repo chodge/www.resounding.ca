@@ -9,7 +9,8 @@ define [
 		model: Team
 
 		initialize: ->
-
+			@Role = 'public'
 			@fetch()
 
-		url: '/Tournaments/api/teams'
+		url: ->
+			'/Tournaments/api/teams?role=' + @Role

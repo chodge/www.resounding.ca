@@ -10,6 +10,9 @@ define [
 	class View extends Marionette.ItemView
 		template: _.template(tmplHtml)
 
+		ui:
+			caret: '.caret'
+
 		initialize: ->
 			@setElement "#team-#{@model.id}"
 		
@@ -19,3 +22,5 @@ define [
 			new PlayersList 
 				collection: @model.Players
 				el: @$('.players')
+
+			if @model.canSeePlayers() then @ui.caret.show() else @ui.caret.hide()

@@ -19,11 +19,11 @@
 
     <script src="~/Content/js/jquery.js"></script>
     <script src="~/Content/js/bootstrap.js"></script>
-    <script src="~/Content/js/bootstrap-collapse.js"></script>
 
     <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/bootstrap-responsive.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/resounding.css" />
+    <link rel="Stylesheet" type="text/css" href="/Content/css/tournament.css" />
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -42,6 +42,18 @@
     <div class="container">
         <div class="page-header">
             <h1>@Model.TournamentName<small>&nbsp;Building software for your business.</small></h1>
+        </div>
+
+        <div id="roles" class="navbar">
+            <div class="navbar-inner">                
+                <div class="btn-group pull-right" data-toggle="buttons-radio">
+                    <a class="brand">Role</a>
+                    <button type="button" class="btn active" data-role="public">Public</button>
+                    <button type="button" class="btn" data-role="player">Player</button>
+                    <button type="button" class="btn" data-role="coach">Coach</button>
+                    <button type="button" class="btn" data-role="convenor">Convenor</button>
+                </div>
+            </div>
         </div>
         
         <div id="teams">            

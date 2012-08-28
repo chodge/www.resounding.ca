@@ -17,10 +17,13 @@
       Teams.prototype.model = Team;
 
       Teams.prototype.initialize = function() {
+        this.Role = 'public';
         return this.fetch();
       };
 
-      Teams.prototype.url = '/Tournaments/api/teams';
+      Teams.prototype.url = function() {
+        return '/Tournaments/api/teams?role=' + this.Role;
+      };
 
       return Teams;
 

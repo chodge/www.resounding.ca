@@ -15,5 +15,11 @@ define [
 			data = super
 			players = data?.Players ? []
 			@Players = new PlayerCollection players
+			@Permissions = data.Permissions
 			delete data.Players
+			delete data.Permissions
 			data
+
+		canSeePlayers: ->
+			@Permissions.U or @Players.any (player) ->
+				player.get('Permissions').R

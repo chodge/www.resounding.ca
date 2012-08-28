@@ -1,12 +1,13 @@
 (function() {
 
-  define(['backbone.marionette', 'teams/views/teams_list'], function(Marionette, ListView) {
+  define(['backbone.marionette', 'teams/views/teams_list', 'teams/views/role_selector'], function(Marionette, ListView, RoleSelector) {
     'use strict';
 
     var app;
-    app = new Marionette.Application;
+    window.TournamentApp = app = new Marionette.Application;
     app.addInitializer(function(options) {
-      return new ListView;
+      new ListView;
+      return new RoleSelector;
     });
     return app;
   });

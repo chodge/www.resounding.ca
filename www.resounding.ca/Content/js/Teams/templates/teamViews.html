@@ -9,7 +9,14 @@
         </div>
 	</div>
 
-    <div id="player-detail">
+    <div id="player-detail-readonly">
         <div>{{= Name }}</div>
+    </div>
+
+    <div id="player-detail-editable">
+        <div>
+            <a href="#Tournaments/Players/{{= Id }}">Edit</a>
+            {{= Name }}
+        </div>
     </div>
 </div>

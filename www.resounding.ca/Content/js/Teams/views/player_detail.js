@@ -5,8 +5,9 @@
   define(['underscore', 'backbone.marionette', 'text!teams/templates/teamViews.html'], function(_, Marionette, html) {
     'use strict';
 
-    var View, tmplHtml;
-    tmplHtml = $(html).find('#player-detail').html();
+    var View, editHtml, readOnlyHtml;
+    readOnlyHtml = $(html).find('#player-detail-readonly').html();
+    editHtml = $(html).find('#player-detail-editable').html();
     return View = (function(_super) {
 
       __extends(View, _super);
@@ -15,11 +16,21 @@
         return View.__super__.constructor.apply(this, arguments);
       }
 
-      View.prototype.template = _.template(tmplHtml);
-
       View.prototype.initialize = function() {
+        var tmpl;
         View.__super__.initialize.apply(this, arguments);
+        tmpl = this.model.get('Permissions').U ? editHtml : readOnlyHtml;
+        this.template = _.template(tmpl);
         return this.render();
+      };
+
+      View.prototype.render = function() {
+        View.__super__.render.apply(this, arguments);
+        if (this.model.get('Permissions').R) {
+          return this.$el.show();
+        } else {
+          return this.$el.hide();
+        }
       };
 
       return View;

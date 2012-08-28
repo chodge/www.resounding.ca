@@ -21,6 +21,17 @@
         this.collection = new TeamCollection;
         this.setElement('#teams');
         this.bindTo(this.collection, 'reset', this.render);
+        this.fetch();
+        return window.TournamentApp.vent.on('change:role', function(role) {
+          _this.collection.Role = role;
+          return _this.fetch();
+        });
+      };
+
+      View.prototype.closeChildren = function() {};
+
+      View.prototype.fetch = function() {
+        var _this = this;
         return this.collection.fetch({
           success: function() {
             return _this.collection.each(function(item) {
@@ -29,8 +40,6 @@
           }
         });
       };
-
-      View.prototype.closeChildren = function() {};
 
       return View;
 

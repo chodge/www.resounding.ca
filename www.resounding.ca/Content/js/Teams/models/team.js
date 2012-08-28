@@ -29,8 +29,16 @@
         data = Team.__super__.parse.apply(this, arguments);
         players = (_ref = data != null ? data.Players : void 0) != null ? _ref : [];
         this.Players = new PlayerCollection(players);
+        this.Permissions = data.Permissions;
         delete data.Players;
+        delete data.Permissions;
         return data;
+      };
+
+      Team.prototype.canSeePlayers = function() {
+        return this.Permissions.U || this.Players.any(function(player) {
+          return player.get('Permissions').R;
+        });
       };
 
       return Team;

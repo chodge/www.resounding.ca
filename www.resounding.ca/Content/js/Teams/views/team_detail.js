@@ -17,16 +17,25 @@
 
       View.prototype.template = _.template(tmplHtml);
 
+      View.prototype.ui = {
+        caret: '.caret'
+      };
+
       View.prototype.initialize = function() {
         return this.setElement("#team-" + this.model.id);
       };
 
       View.prototype.render = function() {
         View.__super__.render.apply(this, arguments);
-        return new PlayersList({
+        new PlayersList({
           collection: this.model.Players,
           el: this.$('.players')
         });
+        if (this.model.canSeePlayers()) {
+          return this.ui.caret.show();
+        } else {
+          return this.ui.caret.hide();
+        }
       };
 
       return View;

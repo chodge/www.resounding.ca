@@ -9,6 +9,12 @@ namespace Resounding.Tournaments.Models
             Database.SetInitializer<TournamentsContext>(new Initializer());
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new PlayerMap());
+            modelBuilder.Configurations.Add(new TeamMap());
+        }
+
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
