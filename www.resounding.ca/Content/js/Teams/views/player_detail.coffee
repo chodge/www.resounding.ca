@@ -18,3 +18,11 @@ define [
 		render: ->
 			super
 			if @model.get('Permissions').R then @$el.show() else @$el.hide()
+			
+			positionPlayers = @model.collection.filter (
+				(player) =>
+					player.get('Position') == @model.get('Position')
+			)
+			if _.indexOf positionPlayers, @model then @$('.position').hide()
+
+			@$el.addClass('player')

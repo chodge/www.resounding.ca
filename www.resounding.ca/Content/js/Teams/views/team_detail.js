@@ -5,8 +5,9 @@
   define(['backbone.marionette', 'teams/views/players_list', 'text!teams/templates/teamViews.html'], function(Marionette, PlayersList, html) {
     'use strict';
 
-    var View, tmplHtml;
-    tmplHtml = $(html).find('#team-detail').html();
+    var View, basicHtml, detailHtml;
+    basicHtml = $(html).find('#team-basic').html();
+    detailHtml = $(html).find('#team-detail').html();
     return View = (function(_super) {
 
       __extends(View, _super);
@@ -15,27 +16,19 @@
         return View.__super__.constructor.apply(this, arguments);
       }
 
-      View.prototype.template = _.template(tmplHtml);
-
-      View.prototype.ui = {
-        caret: '.caret'
-      };
-
       View.prototype.initialize = function() {
-        return this.setElement("#team-" + this.model.id);
+        var tmplHtml;
+        this.setElement("#team-" + this.model.id);
+        tmplHtml = this.model.canSeePlayerDetails() ? detailHtml : basicHtml;
+        return this.template = _.template(tmplHtml);
       };
 
       View.prototype.render = function() {
         View.__super__.render.apply(this, arguments);
-        new PlayersList({
+        return new PlayersList({
           collection: this.model.Players,
           el: this.$('.players')
         });
-        if (this.model.canSeePlayers()) {
-          return this.ui.caret.show();
-        } else {
-          return this.ui.caret.hide();
-        }
       };
 
       return View;

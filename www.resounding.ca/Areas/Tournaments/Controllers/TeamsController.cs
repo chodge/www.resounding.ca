@@ -10,7 +10,7 @@ namespace Resounding.Tournaments.Api
         public ICollection<Team> Get(string role = "public")
         {
             var context = new TournamentsContext();
-            var teams = context.Teams.Include("Players").OrderBy(t => t.Name).ToList();
+            var teams = context.Teams.Include("Players").Include("Coach").OrderBy(t => t.Name).ToList();
 
             foreach (var team in teams) {
                 // everyone can read a team
@@ -28,7 +28,7 @@ namespace Resounding.Tournaments.Api
                     team.Permissions.D = true;
                 }
 
-                var players = team.Players.ToList();
+                var players = team.Players.OrderBy(p => p.Position).ThenBy(p => p.Number).ToList();
 
                 foreach (var player in players) {
 
@@ -42,6 +42,8 @@ namespace Resounding.Tournaments.Api
                         player.Permissions.U = true;
                     }
                 }
+                
+                team.Players = players;
             }
 
             return teams;

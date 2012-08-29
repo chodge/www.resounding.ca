@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Areas\Tournaments\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\TournamentsController.cs" />
+    <Compile Include="Areas\Tournaments\Models\Coach.cs" />
     <Compile Include="Areas\Tournaments\Models\Initializer.cs" />
     <Compile Include="Areas\Tournaments\Models\Maps\PlayerMap.cs" />
     <Compile Include="Areas\Tournaments\Models\Maps\TeamMap.cs" />
@@ -282,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\Teams\views\role_selector.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

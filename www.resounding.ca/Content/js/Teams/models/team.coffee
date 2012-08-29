@@ -20,6 +20,8 @@ define [
 			delete data.Permissions
 			data
 
-		canSeePlayers: ->
-			@Permissions.U or @Players.any (player) ->
-				player.get('Permissions').R
+		canSeePlayerDetails: ->
+			@get('Permissions')?.U or
+				@Players.any (player) ->
+					player.get('Permissions')?.U
+				

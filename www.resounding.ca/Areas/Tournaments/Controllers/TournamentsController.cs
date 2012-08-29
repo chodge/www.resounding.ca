@@ -9,7 +9,7 @@ namespace Resounding.Tournaments.Controllers
         public ActionResult Teams()
         {
             var context = new TournamentsContext();
-            var tournament = context.Tournaments.Include("Teams").First();
+            var tournament = context.Tournaments.Include("Teams").Include("Teams.Coach").First();
             var viewModel = new TeamsViewModel(tournament);
 
             return View(viewModel);

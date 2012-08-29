@@ -4,3 +4,15 @@
     padding: 10px;
     line-height: normal;
 }
+
+#teams .info, #teams .players
+{
+    padding: 10px;
+}
+
+.players
+{
+    width: 50%;
+    margin-left: 10px;
+    border-top: solid 1px #808080;
+}

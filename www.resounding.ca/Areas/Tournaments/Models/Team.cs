@@ -5,6 +5,9 @@ namespace Resounding.Tournaments.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string HomeField { get; set; }
+
+        public Coach Coach { get; set; }
 
         public ICollection<Player> Players { get; set; }
 

@@ -5,16 +5,15 @@ define [
 ], (Marionette, PlayersList, html) ->
 	'use strict'
 
-	tmplHtml = $(html).find('#team-detail').html()
+	basicHtml = $(html).find('#team-basic').html()
+	detailHtml = $(html).find('#team-detail').html()
 
 	class View extends Marionette.ItemView
-		template: _.template(tmplHtml)
-
-		ui:
-			caret: '.caret'
 
 		initialize: ->
 			@setElement "#team-#{@model.id}"
+			tmplHtml = if @model.canSeePlayerDetails() then detailHtml else basicHtml
+			@template = _.template(tmplHtml)
 		
 		render: ->
 			super
@@ -22,5 +21,3 @@ define [
 			new PlayersList 
 				collection: @model.Players
 				el: @$('.players')
-
-			if @model.canSeePlayers() then @ui.caret.show() else @ui.caret.hide()

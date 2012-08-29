@@ -1,16 +1,38 @@
 <div>
+    <div id="team-basic">
+        <a class="team" href="#Tournaments/Teams/{{= Id }}" data-toggle="collapse" data-target="#team-{{= Id }} .details">
+            {{= Name }}
+            <span class="caret"></span>
+        </a>
+        <div class="info">
+            <div>
+                Coach: <strong>{{= Coach.Name }}</strong>
+            </div>
+            <div>
+                Home Field: <strong>{{= HomeField }}</strong>
+            </div>
+        </div>
+        <div class="details collapse">
+            <div class="players container"></div>
+        </div>
+    </div>
 	<div id="team-detail">
 		<a class="team" href="#Tournaments/Teams/{{= Id }}" data-toggle="collapse" data-target="#team-{{= Id }} .details">
             {{= Name }}
             <span class="caret"></span>
         </a>
         <div class="details collapse">
-            <div class="players"></div>
+            <div class="players container"></div>
         </div>
 	</div>
 
     <div id="player-detail-readonly">
-        <div>{{= Name }}</div>
+        <div class="span3">
+            <span class="position">{{= Position }}</span>
+        </div>
+        <div class="span9">
+            #{{= Number }}, {{= Name }}
+        </div>
     </div>
 
     <div id="player-detail-editable">

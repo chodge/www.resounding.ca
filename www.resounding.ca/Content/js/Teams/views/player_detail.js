@@ -25,12 +25,21 @@
       };
 
       View.prototype.render = function() {
+        var positionPlayers,
+          _this = this;
         View.__super__.render.apply(this, arguments);
         if (this.model.get('Permissions').R) {
-          return this.$el.show();
+          this.$el.show();
         } else {
-          return this.$el.hide();
+          this.$el.hide();
         }
+        positionPlayers = this.model.collection.filter((function(player) {
+          return player.get('Position') === _this.model.get('Position');
+        }));
+        if (_.indexOf(positionPlayers, this.model)) {
+          this.$('.position').hide();
+        }
+        return this.$el.addClass('player');
       };
 
       return View;
