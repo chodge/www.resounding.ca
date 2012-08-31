@@ -9,10 +9,32 @@
 {
     padding: 10px;
 }
-
+#teams .info .info-details
+{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 .players
 {
     width: 50%;
     margin-left: 10px;
     border-top: solid 1px #808080;
+}
+
+.player-detail {
+    border: solid 3px #808080;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+    .player-detail .navbar-inner {
+        height: 33px;
+    }
+.container.player {
+    width: auto;
+}
+label.control-label.content {
+    text-align: left;
+    font-weight: bold;
 }

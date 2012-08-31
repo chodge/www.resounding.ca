@@ -16,6 +16,22 @@
 
       Player.prototype.idAttribute = 'Id';
 
+      Player.prototype.sync = function() {};
+
+      Player.prototype.url = function() {
+        return '';
+      };
+
+      Player.prototype.canSeeDetails = function() {
+        var _ref;
+        return (_ref = this.get('Permissions')) != null ? _ref.R : void 0;
+      };
+
+      Player.prototype.canEdit = function() {
+        var _ref;
+        return (_ref = this.get('Permissions')) != null ? _ref.U : void 0;
+      };
+
       return Player;
 
     })(Backbone.Model);

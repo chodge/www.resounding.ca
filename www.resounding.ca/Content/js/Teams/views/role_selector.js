@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['backbone'], function(Marionette) {
+  define(['backbone', 'teams/tournament_application'], function(Marionette, app) {
     'use strict';
 
     var View;
@@ -23,7 +23,7 @@
       View.prototype.click = function(e) {
         var role;
         role = $(e.currentTarget).attr('data-role');
-        return window.TournamentApp.vent.trigger('change:role', role);
+        return app.vent.trigger('change:role', role);
       };
 
       return View;

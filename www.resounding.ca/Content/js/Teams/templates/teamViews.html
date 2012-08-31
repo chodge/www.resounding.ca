@@ -1,15 +1,15 @@
 <div>
     <div id="team-basic">
-        <a class="team" href="#Tournaments/Teams/{{= Id }}" data-toggle="collapse" data-target="#team-{{= Id }} .details">
+        <a class="team" href="#" data-toggle="collapse" data-target="#team-{{= Id }} .details">
             {{= Name }}
             <span class="caret"></span>
         </a>
         <div class="info">
             <div>
-                Coach: <strong>{{= Coach.Name }}</strong>
+                Home Field: <strong>{{= HomeField }}</strong>
             </div>
             <div>
-                Home Field: <strong>{{= HomeField }}</strong>
+                Coach: <strong>{{= Coach.Name }}</strong>
             </div>
         </div>
         <div class="details collapse">
@@ -17,16 +17,29 @@
         </div>
     </div>
 	<div id="team-detail">
-		<a class="team" href="#Tournaments/Teams/{{= Id }}" data-toggle="collapse" data-target="#team-{{= Id }} .details">
+		<a class="team" href="#" data-toggle="collapse" data-target="#team-{{= Id }} .details">
             {{= Name }}
             <span class="caret"></span>
         </a>
+        <div class="info">
+            <div>
+                Home Field: <strong>{{= HomeField }}</strong>
+            </div>
+            <div>
+                Coach: <strong>{{= Coach.Name }}</strong>
+                <div class="info-details">
+                    p: {{= Coach.PhoneNumber }}
+                    <br />
+                    e: <a href="mailto:{{= Coach.Email }}">{{= Coach.Email }}</a>
+                </div>
+            </div>
+        </div>
         <div class="details collapse">
             <div class="players container"></div>
         </div>
 	</div>
 
-    <div id="player-detail-readonly">
+    <div id="player-basic">
         <div class="span3">
             <span class="position">{{= Position }}</span>
         </div>
@@ -35,10 +48,71 @@
         </div>
     </div>
 
-    <div id="player-detail-editable">
-        <div>
-            <a href="#Tournaments/Players/{{= Id }}">Edit</a>
-            {{= Name }}
+    <div id="player-detail">
+        <div class="row-fluid">
+            <div class="span12 edit">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="btn-group">
+                            <a class="btn btn-mini btn-primary" href="#Tournaments/Players/{{= Id }}/edit">Edit</a>
+                            <a class="btn btn-mini btn-danger delete">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">            
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Name: </label>
+                    <label class="control-label content">{{= Name }}</label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Number: </label>
+                    <label class="control-label content">{{= Number }}</label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Position: </label>
+                    <label class="control-label content">{{= Position }}</label>
+                </div>                
+            </form>
+        </div>
+    </div>
+
+    <div id="player-edit">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="btn-group">
+                            <a class="btn btn-mini btn-primary save">Save</a>
+                            <a class="btn btn-mini" href="#Tournaments/Players/{{= Id }}">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">            
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Name: </label>
+                    <input type="text" placeholder="Name" name="name" value="{{= Name }}" />
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Number: </label>
+                    <input type="text" placeholder="Number" name="number" value="{{= Number }}" />
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Position: </label>
+                    <select name="position">
+                        <option value="Goalkeeper">Goalkeeper</option>
+                        <option value="Midfielder">Midfielder</option>
+                        <option value="Forward">Forward</option>
+                        <option value="Defense">Defense</option>
+                        <option value="Striker">Striker</option>
+                    </select>
+                </div>                
+            </form>
         </div>
     </div>
 </div>

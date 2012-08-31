@@ -37,9 +37,9 @@
 
       Team.prototype.canSeePlayerDetails = function() {
         var _ref;
-        return ((_ref = this.get('Permissions')) != null ? _ref.U : void 0) || this.Players.any(function(player) {
+        return ((_ref = this.get('Permissions')) != null ? _ref.R : void 0) || this.Players.any(function(player) {
           var _ref1;
-          return (_ref1 = player.get('Permissions')) != null ? _ref1.U : void 0;
+          return (_ref1 = player.get('Permissions')) != null ? _ref1.R : void 0;
         });
       };
 

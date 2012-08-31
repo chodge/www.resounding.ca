@@ -1,6 +1,7 @@
 define [
-	'backbone'
-], (Marionette) ->
+	'backbone',
+	'teams/tournament_application',
+], (Marionette, app) ->
 	'use strict'
 
 	class View extends Backbone.View
@@ -12,4 +13,4 @@ define [
 
 		click: (e) ->
 			role = $(e.currentTarget).attr('data-role')
-			window.TournamentApp.vent.trigger 'change:role', role
+			app.vent.trigger 'change:role', role

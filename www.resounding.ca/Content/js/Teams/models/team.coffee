@@ -21,7 +21,7 @@ define [
 			data
 
 		canSeePlayerDetails: ->
-			@get('Permissions')?.U or
+			@get('Permissions')?.R or
 				@Players.any (player) ->
-					player.get('Permissions')?.U
+					player.get('Permissions')?.R
 				

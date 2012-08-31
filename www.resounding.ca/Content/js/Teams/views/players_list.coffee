@@ -2,14 +2,13 @@ define [
 	'underscore',
 	'backbone.marionette',
 	'teams/views/player_detail',
-], (_, Marionette, PlayerView) ->
+], (_, Marionette, PlayerDetail) ->
 	'use strict'
 
 	class View extends Marionette.CollectionView
 
-		itemView: PlayerView
+		itemView: PlayerDetail.ReadView
 
 		initialize: ->
 			@children = @children ? []
 			super
-			@render()

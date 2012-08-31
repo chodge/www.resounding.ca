@@ -93,6 +93,9 @@
     <Content Include="Content\js\domReady.js" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\require.js" />
+    <Content Include="Content\js\Teams\controllers\team_controller.js">
+      <DependentUpon>team_controller.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\Teams\models\player.js">
       <DependentUpon>player.coffee</DependentUpon>
     </Content>
@@ -198,7 +201,9 @@
     <Reference Include="System.configuration">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
@@ -246,6 +251,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customers\Index.cshtml" />
@@ -263,8 +269,8 @@
     <Content Include="Areas\Tournaments\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Tournaments\Views\Shared\" />
-    <Folder Include="Content\js\Teams\controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Tournaments\Views\Tournaments\Teams.cshtml" />
@@ -285,6 +291,7 @@
     <Content Include="Content\js\Teams\views\role_selector.coffee" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\Teams\controllers\team_controller.coffee" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
   </ItemGroup>
   <PropertyGroup>
@@ -307,9 +314,9 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51822</DevelopmentServerPort>
+          <DevelopmentServerPort>55595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51822/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

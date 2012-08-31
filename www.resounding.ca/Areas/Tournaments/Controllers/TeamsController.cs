@@ -12,17 +12,24 @@ namespace Resounding.Tournaments.Api
             var context = new TournamentsContext();
             var teams = context.Teams.Include("Players").Include("Coach").OrderBy(t => t.Name).ToList();
 
-            foreach (var team in teams) {
-                // everyone can read a team
-                team.Permissions.R = true;
+            var isConvenor = role == "convenor";
 
-                if (role == "coach" && teams.IndexOf(team) == 0) {
+            foreach (var team in teams) {
+                var isCoach = role == "coach" && teams.IndexOf(team) == 1;
+                var isPlayer = role == "player" && teams.IndexOf(team) == 1;
+
+                // if it's a player on the team, they can see the player details
+                if (isPlayer || isCoach || isConvenor) {
+                    team.Permissions.R = true;
+                }
+
+                if (isCoach) {
                     //coaches can add / update players to teams
                     team.Permissions.C = true;
                     team.Permissions.U = true;
                 }
 
-                if (role == "convenor") {
+                if (isConvenor) {
                     team.Permissions.C = true;
                     team.Permissions.U = true;
                     team.Permissions.D = true;
@@ -32,14 +39,18 @@ namespace Resounding.Tournaments.Api
 
                 foreach (var player in players) {
 
-                    if (role != "public") {
+                    // if it's a player on the team, they can see the player details
+                    if (isPlayer || isCoach || isConvenor) {
                         player.Permissions.R = true;
                     }
 
-                    if ((role == "player" && teams.IndexOf(team) == 0 && players.IndexOf(player) == 0) ||
-                        (role == "coach" && teams.IndexOf(team) == 0) ||
-                        role == "convenor") {
+                    // if it's the particular player, or coach or convenor, they can edit the player
+                    if ((isPlayer && players.IndexOf(player) == 2) || isCoach || isConvenor) {
                         player.Permissions.U = true;
+                    }
+
+                    if (isCoach || isConvenor) {
+                        player.Permissions.D = true;
                     }
                 }
                 

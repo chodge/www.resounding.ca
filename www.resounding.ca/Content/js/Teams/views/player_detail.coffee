@@ -1,28 +1,105 @@
 define [
 	'underscore',
 	'backbone.marionette',
+	'teams/tournament_application',
 	'text!teams/templates/teamViews.html'
-], (_, Marionette, html) ->
+], (_, Marionette, app, html) ->
 	'use strict'
 
-	readOnlyHtml = $(html).find('#player-detail-readonly').html()
-	editHtml = $(html).find('#player-detail-editable').html()
+	basicHtml = $(html).find('#player-basic').html()
+	detailHtml = $(html).find('#player-detail').html()
+	editHtml = $(html).find('#player-edit').html()
 
 	class View extends Marionette.ItemView
+
+		events:
+			'click .delete': 'onDeleteClick'
+
 		initialize: ->
+			app.vent.on('edit:player', @onEdit, this)
+			@model.on('remove', @onDelete, this)
 			super
-			tmpl = if @model.get('Permissions').U then editHtml else readOnlyHtml
+			@$el.attr('id', 'player-' + @model.id)
+			tmpl = if @model.canSeeDetails() then detailHtml else basicHtml
 			@template = _.template(tmpl)
 			@render()
 
 		render: ->
 			super
-			if @model.get('Permissions').R then @$el.show() else @$el.hide()
 			
 			positionPlayers = @model.collection.filter (
 				(player) =>
 					player.get('Position') == @model.get('Position')
 			)
-			if _.indexOf positionPlayers, @model then @$('.position').hide()
+			if _.indexOf positionPlayers, @model then @$('.position').addClass('visible-phone')
 
-			@$el.addClass('player')
+			@$el.addClass('player container')
+
+			if @model.canSeeDetails() then @$el.addClass('player-detail')
+			if not @model.get('Permissions').U
+				@$('.edit').remove()
+
+			if not @model.get('Permissions').D
+				@$('.delete').remove()
+
+		remove: ->
+
+		onEdit: (id) ->
+			if id == @model.id
+				@close()
+				new EditView model: @model, el: @el
+
+		onDelete: ->
+			@close()
+			@$el.remove()
+
+		onDeleteClick: (e) ->
+			e.preventDefault()
+			if confirm('Are you sure you want to remove this player?')
+				@model.collection.remove @model
+
+	class EditView extends Marionette.ItemView
+		events:
+			'click .save': 'onSave'
+
+		ui:
+			$name: '[name=name]',	
+			$number: '[name=number]',
+			$position: '[name=position]'
+
+		initialize: ->
+			@model.on('change', @showReadView, this)
+			app.vent.on('show:player', @onCancel, this)
+			super
+			@template = _.template(editHtml)
+			@render()
+
+		close: ->
+
+		onSave: ->
+			@model.save(
+				Name: @ui.$name.val(),
+				Number: @ui.$number.val(),
+				Position: @ui.$position.val()
+			)
+
+		render: ->
+			super
+			@ui.$position
+				.append(
+					$('<option></option>')
+					.attr('value', @model.get('Position'))
+					.text(@model.get('Position'))
+				).val(@model.get('Position'))
+
+		showReadView: ->
+			@close()
+			new View model: @model, el: @el
+
+		onCancel: (id) ->
+			if id == @model.id
+				@showReadView()
+				
+
+	ReadView: View,
+	EditView: EditView
