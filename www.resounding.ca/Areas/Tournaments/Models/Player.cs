@@ -6,6 +6,8 @@
         public string Name { get; set; }
         public string Position { get; set; }
         public string Number { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
 
         private Permissions _permissions = new Permissions();
         public Permissions Permissions { get { return _permissions; } }

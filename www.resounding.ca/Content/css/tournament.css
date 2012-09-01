@@ -34,7 +34,6 @@
 .container.player {
     width: auto;
 }
-label.control-label.content {
-    text-align: left;
-    font-weight: bold;
-}
+    .container.player .control-group {
+        padding-left: 25px;
+    }

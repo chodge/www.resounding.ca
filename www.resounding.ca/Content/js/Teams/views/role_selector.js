@@ -22,6 +22,7 @@
 
       View.prototype.click = function(e) {
         var role;
+        $($(e.currentTarget).attr('data-target')).removeClass('hide').addClass('in');
         role = $(e.currentTarget).attr('data-role');
         return app.vent.trigger('change:role', role);
       };

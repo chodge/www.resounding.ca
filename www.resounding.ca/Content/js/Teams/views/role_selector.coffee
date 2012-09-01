@@ -12,5 +12,7 @@ define [
 			'click button': 'click'
 
 		click: (e) ->
+			$($(e.currentTarget).attr('data-target')).removeClass('hide').addClass('in')
+
 			role = $(e.currentTarget).attr('data-role')
 			app.vent.trigger 'change:role', role

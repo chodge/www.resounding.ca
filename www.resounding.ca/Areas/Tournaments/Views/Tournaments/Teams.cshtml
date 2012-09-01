@@ -48,11 +48,33 @@
             <div class="navbar-inner">                
                 <div class="btn-group pull-right" data-toggle="buttons-radio">
                     <a class="brand">Role</a>
-                    <button type="button" class="btn active" data-role="public">Public</button>
-                    <button type="button" class="btn" data-role="player">Player</button>
-                    <button type="button" class="btn" data-role="coach">Coach</button>
-                    <button type="button" class="btn" data-role="convenor">Convenor</button>
+                    <button type="button" class="btn active" data-role="public" data-target="#public-explanation">Public</button>
+                    <button type="button" class="btn" data-role="player" data-target="#player-explanation">Player</button>
+                    <button type="button" class="btn" data-role="coach" data-target="#coach-explanation">Coach</button>
+                    <button type="button" class="btn" data-role="convenor" data-target="#convenor-explanation">Convenor</button>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="public-explanation" class="alert offset6 span6 fade in">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                When the <strong>Public</strong>
+                views the site, they see basic information about teams and players,
+                but no personal data.
+            </div>
+            <div id="player-explanation" class="alert offset6 span6 fade hide">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                A <strong>Player</strong> can see detailed information about his or her own team,
+                and can edit their own information.
+            </div>
+            <div id="coach-explanation" class="alert offset6 span6 fade hide">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                A <strong>Coach</strong> can see and edit detailed information for his or her own teams.
+            </div>
+            <div id="convenor-explanation" class="alert offset6 span6 fade hide">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                A <strong>Convenor</strong> can see and edit all information for all teams.
             </div>
         </div>
         
