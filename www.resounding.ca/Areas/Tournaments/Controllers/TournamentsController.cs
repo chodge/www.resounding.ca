@@ -8,11 +8,21 @@ namespace Resounding.Tournaments.Controllers
     {
         public ActionResult Teams()
         {
-            var context = new TournamentsContext();
-            var tournament = context.Tournaments.Include("Teams").Include("Teams.Coach").First();
-            var viewModel = new TeamsViewModel(tournament);
+            using(var context = new TournamentsContext()) {
+                var tournament = context.Tournaments.Include("Teams").Include("Teams.Coach").First();
+                var viewModel = new TeamsViewModel(tournament);
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Reset()
+        {
+            using (var context = new TournamentsContext()) {
+                context.Database.Initialize(true);
+            }
+            return new EmptyResult();
         }
     }
 }

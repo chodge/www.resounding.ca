@@ -7,10 +7,8 @@ define [
 		
 		idAttribute: 'Id'
 
-		sync: ->
-
 		url: ->
-			''
+			'/Tournaments/api/teams/' + @id
 
 		canSeeDetails: ->
 			@get('Permissions')?.R

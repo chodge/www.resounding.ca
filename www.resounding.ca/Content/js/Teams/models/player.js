@@ -16,10 +16,8 @@
 
       Player.prototype.idAttribute = 'Id';
 
-      Player.prototype.sync = function() {};
-
       Player.prototype.url = function() {
-        return '';
+        return '/Tournaments/api/teams/' + this.id;
       };
 
       Player.prototype.canSeeDetails = function() {

@@ -16,15 +16,25 @@
 
       View.prototype.el = '#roles';
 
+      View.prototype.role = 'public';
+
       View.prototype.events = {
-        'click button': 'click'
+        'click [data-role]': 'click',
+        'click .btn-danger': 'reset'
       };
 
       View.prototype.click = function(e) {
-        var role;
         $($(e.currentTarget).attr('data-target')).removeClass('hide').addClass('in');
-        role = $(e.currentTarget).attr('data-role');
-        return app.vent.trigger('change:role', role);
+        this.role = $(e.currentTarget).attr('data-role');
+        return app.vent.trigger('change:role', this.role);
+      };
+
+      View.prototype.reset = function(e) {
+        if (confirm('Are you sure you want to reset the data')) {
+          return $.post('/Tournaments/Tournaments/Reset').success(function() {
+            return app.vent.trigger('change:role', this.role);
+          });
+        }
       };
 
       return View;

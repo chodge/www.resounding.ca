@@ -15,8 +15,8 @@ namespace Resounding.Tournaments.Api
             var isConvenor = role == "convenor";
 
             foreach (var team in teams) {
-                var isCoach = role == "coach" && teams.IndexOf(team) == 1;
-                var isPlayer = role == "player" && teams.IndexOf(team) == 1;
+                var isCoach = role == "coach" && teams.IndexOf(team) == 0;
+                var isPlayer = role == "player" && teams.IndexOf(team) == 0;
 
                 // if it's a player on the team, they can see the player details
                 if (isPlayer || isCoach || isConvenor) {
@@ -53,11 +53,38 @@ namespace Resounding.Tournaments.Api
                         player.Permissions.D = true;
                     }
                 }
-                
+
                 team.Players = players;
             }
 
             return teams;
+        }
+
+        public bool Put(int id, Player changes)
+        {
+            using (var context = new TournamentsContext()) {
+                var player = context.Players.FirstOrDefault(p => p.Id == id);
+                if (player != null) {
+                    player.Name = changes.Name;
+                    player.Number = changes.Number;
+                    player.PhoneNumber = changes.PhoneNumber;
+                    player.Email = changes.Email;
+                }
+                context.SaveChanges();
+            }
+            return true;
+        }
+
+        public bool Delete(int id)
+        {
+            using (var context = new TournamentsContext()) {
+                var player = context.Players.FirstOrDefault(p => p.Id == id);
+                if (player != null) {
+                    context.Players.Remove(player);
+                    context.SaveChanges();
+                }
+            }
+            return true;
         }
     }
 }

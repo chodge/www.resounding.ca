@@ -56,6 +56,8 @@ define [
 		onDeleteClick: (e) ->
 			e.preventDefault()
 			if confirm('Are you sure you want to remove this player?')
+				debugger
+				@model.destroy()
 				@model.collection.remove @model
 
 	class EditView extends Marionette.ItemView
@@ -65,7 +67,9 @@ define [
 		ui:
 			$name: '[name=name]',	
 			$number: '[name=number]',
-			$position: '[name=position]'
+			$position: '[name=position]',
+			$email: '[name=email]',
+			$phone: '[name=phone]'
 
 		initialize: ->
 			@model.on('change', @showReadView, this)
@@ -80,7 +84,9 @@ define [
 			@model.save(
 				Name: @ui.$name.val(),
 				Number: @ui.$number.val(),
-				Position: @ui.$position.val()
+				Position: @ui.$position.val(),
+				Email: @ui.$email.val(),
+				PhoneNumber: @ui.$phone.val()
 			)
 
 		render: ->

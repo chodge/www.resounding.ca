@@ -74,6 +74,8 @@
       View.prototype.onDeleteClick = function(e) {
         e.preventDefault();
         if (confirm('Are you sure you want to remove this player?')) {
+          debugger;
+          this.model.destroy();
           return this.model.collection.remove(this.model);
         }
       };
@@ -96,7 +98,9 @@
       EditView.prototype.ui = {
         $name: '[name=name]',
         $number: '[name=number]',
-        $position: '[name=position]'
+        $position: '[name=position]',
+        $email: '[name=email]',
+        $phone: '[name=phone]'
       };
 
       EditView.prototype.initialize = function() {
@@ -113,7 +117,9 @@
         return this.model.save({
           Name: this.ui.$name.val(),
           Number: this.ui.$number.val(),
-          Position: this.ui.$position.val()
+          Position: this.ui.$position.val(),
+          Email: this.ui.$email.val(),
+          PhoneNumber: this.ui.$phone.val()
         });
       };
 
