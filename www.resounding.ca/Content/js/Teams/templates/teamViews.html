@@ -1,9 +1,6 @@
 <div>
     <div id="team-basic">
-        <a class="team" href="#" data-toggle="collapse" data-target="#team-{{= Id }} .details">
-            {{= Name }}
-            <span class="caret"></span>
-        </a>
+        <h1>{{= Name }}</h1>
         <div class="info">
             <div>
                 Home Field: <strong>{{= HomeField }}</strong>
@@ -12,15 +9,12 @@
                 Coach: <strong>{{= Coach.Name }}</strong>
             </div>
         </div>
-        <div class="details collapse">
+        <div class="details">
             <div class="players container"></div>
         </div>
     </div>
 	<div id="team-detail">
-		<a class="team" href="#" data-toggle="collapse" data-target="#team-{{= Id }} .details">
-            {{= Name }}
-            <span class="caret"></span>
-        </a>
+		<h1>{{= Name }}</h1>
         <div class="info">
             <div>
                 Home Field: <strong>{{= HomeField }}</strong>
@@ -34,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="details collapse">
+        <div class="details">
             <div class="players container"></div>
         </div>
 	</div>
@@ -49,7 +43,7 @@
     </div>
 
     <div id="player-detail">
-        <div class="navbar">
+        <div class="navbar edit">
             <div class="navbar-inner">
                 <div class="btn-group">
                     <a class="btn btn-mini btn-primary" href="#Tournaments/Players/{{= Id }}/edit">Edit</a>
@@ -123,5 +117,11 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div id="reset-data-success-message">
+        <div class="alert alert-success offset6 span6 fade in">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			Data has been reset.
+        </div>
     </div>
 </div>

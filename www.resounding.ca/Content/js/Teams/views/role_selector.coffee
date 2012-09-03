@@ -1,8 +1,11 @@
 define [
 	'backbone',
 	'teams/tournament_application',
-], (Marionette, app) ->
+	'text!teams/templates/teamViews.html'
+], (Marionette, app, html) ->
 	'use strict'
+
+	msg = $(html).find('#reset-data-success-message').html()
 
 	class View extends Backbone.View
 		
@@ -12,16 +15,22 @@ define [
 
 		events:
 			'click [data-role]': 'click',
-			'click .btn-danger': 'reset'
+			'click #roles .btn-danger': 'reset'
 
 		click: (e) ->
-			$($(e.currentTarget).attr('data-target')).removeClass('hide').addClass('in')
+			$('#roles li').removeClass('active')
+			$this = $(e.currentTarget)
+			$this.parent().addClass('active')
+			$($this.attr('data-target')).removeClass('hide').addClass('in')
 
-			@role = $(e.currentTarget).attr('data-role')
+			@role = $this.attr('data-role')
 			app.vent.trigger 'change:role', @role
 
 		reset: (e) ->
-			if confirm 'Are you sure you want to reset the data'
+			if confirm 'Are you sure you want to reset the data?'
+				$('#roles li.open').removeClass('open')
+				
 				$.post('/Tournaments/Tournaments/Reset')
 					.success ->
+						$(msg).appendTo($('#messages'))
 						app.vent.trigger 'change:role', @role
