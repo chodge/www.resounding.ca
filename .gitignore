@@ -4,3 +4,5 @@ obj
 *.user
 *.cache
 *.Publish.xml
+*.sdf
+*.ldf
