@@ -37,3 +37,10 @@
     .container.player .control-group {
         padding-left: 25px;
     }
+
+@media (max-width: 767px) {
+    .players {
+        width: 100%;
+        margin-left: auto;
+    }
+}
