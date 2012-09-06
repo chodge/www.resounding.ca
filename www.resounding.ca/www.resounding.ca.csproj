@@ -44,9 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Areas\Tournaments\Controllers\GamesController.cs" />
+    <Compile Include="Areas\Tournaments\Controllers\ScheduleController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\Tournaments\Models\Coach.cs" />
+    <Compile Include="Areas\Tournaments\Models\Game.cs" />
     <Compile Include="Areas\Tournaments\Models\Initializer.cs" />
     <Compile Include="Areas\Tournaments\Models\Maps\PlayerMap.cs" />
     <Compile Include="Areas\Tournaments\Models\Maps\TeamMap.cs" />
@@ -92,7 +95,39 @@
     <Content Include="Content\css\resounding.css" />
     <Content Include="Content\js\domReady.js" />
     <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\libs\almond.js" />
+    <Content Include="Content\js\libs\backbone.js" />
+    <Content Include="Content\js\libs\date.js" />
+    <Content Include="Content\js\plugins\backbone.marionette.js" />
+    <Content Include="Content\js\libs\jquery.js" />
+    <Content Include="Content\js\libs\require.js" />
+    <Content Include="Content\js\libs\underscore.js" />
+    <Content Include="Content\js\plugins\backbone.layoutmanager.js" />
+    <Content Include="Content\js\plugins\text.js" />
     <Content Include="Content\js\require.js" />
+    <None Include="Content\js\Schedule\app.coffee" />
+    <Content Include="Content\js\Schedule\app.js">
+      <DependentUpon>app.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\index.js">
+      <DependentUpon>index.coffee</DependentUpon>
+    </Content>
+    <None Include="Content\js\Schedule\main.coffee" />
+    <Content Include="Content\js\Schedule\main.js">
+      <DependentUpon>main.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\modules\schedule.coffee" />
+    <None Include="Content\js\Schedule\router.coffee" />
+    <Content Include="Content\js\Schedule\modules\schedule.js">
+      <DependentUpon>schedule.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\router.js">
+      <DependentUpon>router.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\templates\scheduleViews.html" />
+    <Content Include="Content\js\Schedule\views\schedule_list.js">
+      <DependentUpon>schedule_list.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\Teams\controllers\team_controller.js">
       <DependentUpon>team_controller.coffee</DependentUpon>
     </Content>
@@ -292,6 +327,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\Teams\controllers\team_controller.coffee" />
+    <Content Include="Areas\Tournaments\Views\Schedule\Index.cshtml" />
+    <Content Include="Content\js\Schedule\index.coffee" />
+    <Content Include="Content\js\Schedule\views\schedule_list.coffee" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
   </ItemGroup>
   <PropertyGroup>

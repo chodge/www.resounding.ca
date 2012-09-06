@@ -18,5 +18,6 @@ namespace Resounding.Tournaments.Models
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Game> Games { get; set; }
     }
 }
