@@ -7,16 +7,25 @@ define [
 	'use strict'
 
 	itemHtml = $(html).find('#schedule-list-item').html()
-	listHtml = $(html).find('#schedule-list').html()
 
 	class ListItem extends Marionette.ItemView
+
 		template: _.template(itemHtml)
+
+		render: ->
+			super
+			date = @model.dateOnly()
+			gamesOnDate = @model.collection.byDate(date)
+			if _.indexOf(gamesOnDate, @model) != 0
+				@$('.date').addClass 'subsequent'
 
 	class View extends Marionette.CollectionView
 		
 		itemView: ListItem
 
-		template: _.template(listHtml)
+		tagName: 'ul'
+
+		className: 'schedule container-fluid'
 
 		initialize: ->
 			creating = !@collection

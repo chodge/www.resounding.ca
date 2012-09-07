@@ -19,7 +19,7 @@
       };
 
       Controller.prototype.index = function() {
-        return $('#main').html(new ScheduleList().render().el);
+        return $('#main').html('').append(new ScheduleList().render().el);
       };
 
       return Controller;

@@ -38,6 +38,21 @@
         padding-left: 25px;
     }
 
+ul.schedule {
+    list-style-type: none;
+}
+
+.scheduled-game {
+    border-bottom: solid 1px #808080;
+}
+    .scheduled-game .subsequent {
+        visibility: hidden;
+    }
+
+.team-name {
+    white-space: nowrap;
+}
+
 @media (max-width: 767px) {
     .players {
         width: 100%;

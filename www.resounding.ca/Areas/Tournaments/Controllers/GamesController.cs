@@ -11,7 +11,7 @@ namespace Resounding.Tournaments.Api
         public ICollection<Game> Get(DateTime? start = null, DateTime? end = null)
         {
             var context = new TournamentsContext();
-            IEnumerable<Game> games = context.Games.Include("Home").Include("Away");
+            IEnumerable<Game> games = context.Games.Include("Home").Include("Visitor");
             if (start.HasValue) {
                 games = games.Where(g => g.Date > start.Value.Date);
             }

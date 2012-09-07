@@ -46,8 +46,8 @@
   <ItemGroup>
     <Compile Include="Areas\Tournaments\Controllers\GamesController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\ScheduleController.cs" />
+    <Compile Include="Areas\Tournaments\Controllers\TeamController.cs" />
     <Compile Include="Areas\Tournaments\Controllers\TeamsController.cs" />
-    <Compile Include="Areas\Tournaments\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\Tournaments\Models\Coach.cs" />
     <Compile Include="Areas\Tournaments\Models\Game.cs" />
     <Compile Include="Areas\Tournaments\Models\Initializer.cs" />
@@ -55,6 +55,7 @@
     <Compile Include="Areas\Tournaments\Models\Maps\TeamMap.cs" />
     <Compile Include="Areas\Tournaments\Models\Permissions.cs" />
     <Compile Include="Areas\Tournaments\Models\Player.cs" />
+    <Compile Include="Areas\Tournaments\Models\ScheduleViewModel.cs" />
     <Compile Include="Areas\Tournaments\Models\Team.cs" />
     <Compile Include="Areas\Tournaments\Models\TeamsViewModel.cs" />
     <Compile Include="Areas\Tournaments\Models\Tournament.cs" />
@@ -308,7 +309,7 @@
     <Folder Include="Areas\Tournaments\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Tournaments\Views\Tournaments\Teams.cshtml" />
+    <Content Include="Areas\Tournaments\Views\Teams\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\Teams\models\player.coffee" />

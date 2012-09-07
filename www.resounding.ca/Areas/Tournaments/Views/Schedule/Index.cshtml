@@ -1,4 +1,4 @@
-﻿@model Resounding.Tournaments.Models.TeamsViewModel
+﻿@model Resounding.Tournaments.Models.ScheduleViewModel
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
         <meta name="description" content="Website for Resounding Software. We build resounding success." />
         <meta name="keywords" content="Software Development,Resounding Software" />
 
-        <title>Resounding Tournaments Teams</title>
+        <title>Resounding Tournaments Schedule</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 
@@ -40,7 +40,54 @@
 
     <body>
 
-        <div id="main"></div>
+        <div class="container">
+            <div class="page-header">
+                <h1>@Model.TournamentName<small>&nbsp;Building software for your business.</small></h1>
+            </div>
+
+            <div id="filter" class="navbar">
+            <div class="navbar-inner">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand">Game Filter</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#">List</a>
+                        </li>
+                        <li>
+                            <a href="#">Day</a>
+                        </li>
+                        <li>
+                            <a href="#">Week</a>
+                        </li>
+                        <li>
+                            <a href="#">Month</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @Model.TeamFilter
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @foreach (var team in Model.Teams) {
+                                        <a href="/Tournaments/Schedule?team=@team.Id">@team.Name</a>
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+            <div id="main"></div>
+        </div>
 
         <script data-main="/Content/js/Schedule/index.js" src="~/Content/js/libs/require.js"></script>
     </body>

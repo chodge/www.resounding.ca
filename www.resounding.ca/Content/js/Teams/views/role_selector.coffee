@@ -30,7 +30,7 @@ define [
 			if confirm 'Are you sure you want to reset the data?'
 				$('#roles li.open').removeClass('open')
 				
-				$.post('/Tournaments/Tournaments/Reset')
+				$.post('/Tournaments/Teams/Reset')
 					.success ->
 						$(msg).appendTo($('#messages'))
 						app.vent.trigger 'change:role', @role

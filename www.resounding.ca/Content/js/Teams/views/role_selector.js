@@ -37,7 +37,7 @@
       View.prototype.reset = function(e) {
         if (confirm('Are you sure you want to reset the data?')) {
           $('#roles li.open').removeClass('open');
-          return $.post('/Tournaments/Tournaments/Reset').success(function() {
+          return $.post('/Tournaments/Teams/Reset').success(function() {
             $(msg).appendTo($('#messages'));
             return app.vent.trigger('change:role', this.role);
           });

@@ -5,9 +5,8 @@
   define(['underscore', 'plugins/backbone.marionette', 'modules/schedule', 'plugins/text!templates/scheduleViews.html'], function(_, Marionette, Schedule, html) {
     'use strict';
 
-    var ListItem, View, itemHtml, listHtml;
+    var ListItem, View, itemHtml;
     itemHtml = $(html).find('#schedule-list-item').html();
-    listHtml = $(html).find('#schedule-list').html();
     ListItem = (function(_super) {
 
       __extends(ListItem, _super);
@@ -17,6 +16,16 @@
       }
 
       ListItem.prototype.template = _.template(itemHtml);
+
+      ListItem.prototype.render = function() {
+        var date, gamesOnDate;
+        ListItem.__super__.render.apply(this, arguments);
+        date = this.model.dateOnly();
+        gamesOnDate = this.model.collection.byDate(date);
+        if (_.indexOf(gamesOnDate, this.model) !== 0) {
+          return this.$('.date').addClass('subsequent');
+        }
+      };
 
       return ListItem;
 
@@ -31,7 +40,9 @@
 
       View.prototype.itemView = ListItem;
 
-      View.prototype.template = _.template(listHtml);
+      View.prototype.tagName = 'ul';
+
+      View.prototype.className = 'schedule container-fluid';
 
       View.prototype.initialize = function() {
         var creating;

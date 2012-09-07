@@ -1,8 +1,14 @@
 ﻿<div>
-    <div id="schedule-list">
-        <ul></ul>
-    </div>
     <div id="schedule-list-item">
-        <li>{{= window.Date.parse(Date).toString("d-MMM-yyyy") }}</li>
+        <li class="row-fluid scheduled-game">
+            <div class="span1 date">{{= Date.toString("MMM d") }}</div>
+            <div class="span1">{{= Date.toString("h:mm tt") }}</div>
+            <div class="span2">{{= Home.HomeField }}</div>
+            <div class="span3">
+                <span class="team-name">{{= Home.Name }}</span>
+                 vs. 
+                <span class="team-name">{{= Visitor.Name }}</span>
+            </div>
+        </li>
     </div>
 </div>

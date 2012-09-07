@@ -24,7 +24,7 @@ namespace Resounding.Tournaments
             context.MapRoute(
                 "Tournaments",
                 "Tournaments/{controller}/{action}",
-                new { controller = "Tournaments", action = "Teams"}
+                new { controller = "Tournaments", action = "Index"}
             );
         }
     }

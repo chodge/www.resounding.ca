@@ -7,6 +7,6 @@ namespace Resounding.Tournaments.Models
         public DateTime Date { get; set; }
 
         public Team Home { get; set; }
-        public Team Away { get; set; }
+        public Team Visitor { get; set; }
     }
 }

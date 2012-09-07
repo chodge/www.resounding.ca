@@ -108,42 +108,42 @@ namespace Resounding.Tournaments.Models
             context.Games.Add(
                 new Game {
                     Home = dreamTeam,
-                    Away = jays,
+                    Visitor = jays,
                     Date = new DateTime(2012, 9, 3, 19, 0, 0)
                 }
             );
             context.Games.Add(
                 new Game {
                     Home = yankees,
-                    Away = oilers,
+                    Visitor = oilers,
                     Date = new DateTime(2012, 9, 3, 19, 0, 0)
                 }
             );
             context.Games.Add(
                 new Game {
                     Home = dreamTeam,
-                    Away = yankees,
+                    Visitor = yankees,
                     Date = new DateTime(2012, 9, 4, 19, 0, 0)
                 }
             );
             context.Games.Add(
                 new Game {
                     Home = jays,
-                    Away = oilers,
+                    Visitor = oilers,
                     Date = new DateTime(2012, 9, 4, 19, 0, 0)
                 }
             );
             context.Games.Add(
                 new Game {
                     Home = dreamTeam,
-                    Away = oilers,
+                    Visitor = oilers,
                     Date = new DateTime(2012, 9, 5, 19, 0, 0)
                 }
             );
             context.Games.Add(
                 new Game {
                     Home = jays,
-                    Away = yankees,
+                    Visitor = yankees,
                     Date = new DateTime(2012, 9, 6, 19, 0, 0)
                 }
             );

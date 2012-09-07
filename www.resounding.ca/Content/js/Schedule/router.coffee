@@ -9,4 +9,4 @@
 		routes: '': 'index'
 
 		index: ->
-			$('#main').html(new ScheduleList().render().el)
+			$('#main').html('').append(new ScheduleList().render().el)
