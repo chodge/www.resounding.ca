@@ -20,6 +20,6 @@ require.config(
 			deps: ['underscore', 'jquery'],
 			exports: 'Backbone'
 		,
-		date:
+		datejs:
 			exports: 'Date'
 );

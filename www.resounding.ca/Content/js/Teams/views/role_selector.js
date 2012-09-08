@@ -26,7 +26,7 @@
 
       View.prototype.click = function(e) {
         var $this;
-        $('#roles li').removeClass('active');
+        this.$('li').removeClass('active');
         $this = $(e.currentTarget);
         $this.parent().addClass('active');
         $($this.attr('data-target')).removeClass('hide').addClass('in');

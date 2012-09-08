@@ -118,16 +118,21 @@
       <DependentUpon>main.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\Schedule\modules\schedule.coffee" />
-    <None Include="Content\js\Schedule\router.coffee" />
     <Content Include="Content\js\Schedule\modules\schedule.js">
       <DependentUpon>schedule.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\Schedule\router.js">
-      <DependentUpon>router.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\js\Schedule\templates\scheduleViews.html" />
+    <Content Include="Content\js\Schedule\views\calendar.js">
+      <DependentUpon>calendar.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\Schedule\views\schedule_list.js">
       <DependentUpon>schedule_list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\views\toolbar.js">
+      <DependentUpon>toolbar.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Schedule\views\view_selector.js">
+      <DependentUpon>view_selector.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\Teams\controllers\team_controller.js">
       <DependentUpon>team_controller.coffee</DependentUpon>
@@ -331,6 +336,9 @@
     <Content Include="Areas\Tournaments\Views\Schedule\Index.cshtml" />
     <Content Include="Content\js\Schedule\index.coffee" />
     <Content Include="Content\js\Schedule\views\schedule_list.coffee" />
+    <Content Include="Content\js\Schedule\views\toolbar.coffee" />
+    <Content Include="Content\js\Schedule\views\view_selector.coffee" />
+    <Content Include="Content\js\Schedule\views\calendar.coffee" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
   </ItemGroup>
   <PropertyGroup>

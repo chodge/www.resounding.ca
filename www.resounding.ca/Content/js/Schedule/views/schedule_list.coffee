@@ -3,7 +3,8 @@ define [
 	'underscore',
 	'plugins/backbone.marionette',
 	'modules/schedule',
-	'plugins/text!templates/scheduleViews.html'
+	'plugins/text!templates/scheduleViews.html',
+	'datejs'
 ], (app, _, Marionette, Schedule, html) ->
 	'use strict'
 
@@ -28,7 +29,7 @@ define [
 
 		className: 'schedule container-fluid'
 
-		initialize: ->
+		initialize: (options) ->
 			
 			creating = !@collection
 			if creating
@@ -36,6 +37,8 @@ define [
 
 			@collection.on 'reset', @render, this
 			@collection.on 'filterSet', @showTeamFilter, this
+
+			if options.container then $(options.container).html('').append(@el)
 
 			if creating then @collection.fetch() else @render()
 
@@ -57,5 +60,3 @@ define [
 					item.get('Visitor').Name
 			else
 				'All Teams'
-
-			$('#filter .dropdown > a').text(name)

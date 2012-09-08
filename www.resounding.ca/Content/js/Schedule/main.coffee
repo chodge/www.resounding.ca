@@ -1,22 +1,12 @@
 ﻿require [
 	'app',
-	'router',
-	'datejs'
-], (app, Router) ->
-
-	app.router = new Router();
+	'backbone',
+	'views/view_selector',
+	'views/toolbar'
+], (app, Backbone, ViewSelector, Toolbar) ->
 
 	app.addInitializer ->
-		
-		Backbone.history.start()
-
-		$(document).on('click', 'a:not([data-bypass])', (evt) ->
-			href = $(this).attr('href')
-
-			if href and href.indexOf('#') == 0
-				evt.preventDefault()
-
-				Backbone.history.navigate(href, true);
-		)
+		new ViewSelector('#main')
+		new Toolbar
 
 	app.start()

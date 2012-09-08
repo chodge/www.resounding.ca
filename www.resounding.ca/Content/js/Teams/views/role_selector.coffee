@@ -18,7 +18,7 @@ define [
 			'click #roles .btn-danger': 'reset'
 
 		click: (e) ->
-			$('#roles li').removeClass('active')
+			@$('li').removeClass('active')
 			$this = $(e.currentTarget)
 			$this.parent().addClass('active')
 			$($this.attr('data-target')).removeClass('hide').addClass('in')

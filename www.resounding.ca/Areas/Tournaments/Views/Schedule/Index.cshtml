@@ -52,33 +52,46 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand">Game Filter</a>
-                    <div class="nav-collapse collapse">
+                    <div class="nav-collapse collapse">                        
                         <ul class="nav nav-pills">
                             <li class="active">
-                                <a href="#">List</a>
+                                <a href="#" class="view">List</a>
                             </li>
                             <li>
-                                <a href="#">Day</a>
+                                <a href="#" class="view">Day</a>
                             </li>
                             <li>
-                                <a href="#">Week</a>
+                                <a href="#" class="view">Week</a>
                             </li>
                             <li>
-                                <a href="#">Month</a>
+                                <a href="#" class="view">Month</a>
                             </li>
-                            <li class="divider"></li>
+                            <li class="divider-vertical"></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#" class="dropdown-toggle current-team-filter" data-toggle="dropdown">
                                     @Model.TeamFilter
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#Tournaments/Schedule/Team/all">All Teams</a>
+                                        <a href="#" class="team-filter" data-id="" data-toggle="dropdown">All Teams</a>
                                         @foreach (var team in Model.Teams) {
-                                            <a href="#Tournaments/Schedule/Team/@team.Id">@team.Name</a>
+                                            <a href="#" class="team-filter" data-id="@team.Id" data-toggle="dropdown">@team.Name</a>
                                         }
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right">                            
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button type="button" class="btn btn-danger btn-block">Reset Data</button>
                                     </li>
                                 </ul>
                             </li>
