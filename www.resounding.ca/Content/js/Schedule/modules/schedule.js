@@ -18,10 +18,32 @@
     collection = Backbone.Collection.extend({
       url: '/Tournaments/api/Games',
       model: model,
+      initialize: function() {
+        return app.vent.on('filter:team', this.filterSet, this);
+      },
+      filterSet: function(team) {
+        if (team) {
+          this.filterFn = function(item) {
+            return item.get('Home').Id === team || item.get('Visitor').Id === team;
+          };
+        } else {
+          this.filterFn = null;
+        }
+        this.trigger('reset');
+        return this.trigger('filterSet', team);
+      },
+      filteredItems: function(item, index) {
+        var filter;
+        filter = this.filterFn ? this.filterFn : function() {
+          return true;
+        };
+        return this.filter(filter);
+      },
       byDate: function(date) {
-        var requested;
+        var items, requested;
         requested = date.clone().clearTime();
-        return this.reduce(function(memo, item) {
+        items = this.filteredItems();
+        return _.reduce(items, function(memo, item) {
           if (item.dateOnly().equals(requested)) {
             memo.push(item);
           }

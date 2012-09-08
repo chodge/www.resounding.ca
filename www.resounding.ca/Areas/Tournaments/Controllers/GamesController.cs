@@ -8,23 +8,17 @@ namespace Resounding.Tournaments.Api
 {
     public class GamesController : ApiController
     {
-        public ICollection<Game> Get(DateTime? start = null, DateTime? end = null)
+        public ICollection<Game> Get()
         {
             var context = new TournamentsContext();
-            IEnumerable<Game> games = context.Games.Include("Home").Include("Visitor");
-            if (start.HasValue) {
-                games = games.Where(g => g.Date > start.Value.Date);
-            }
+            var games = context.Games
+                .Include("Home")
+                .Include("Visitor")
+                .OrderBy(g => g.Date)
+                .ThenBy(g => g.Home.Name)
+                .ToList();
 
-            if (end.HasValue) {
-                var endOfDay = end.Value.Date.AddDays(1).AddSeconds(-1);
-                games = games.Where(g => g.Date < endOfDay);
-            }
-
-            games = games.OrderBy(g => g.Date).ThenBy(g => g.Home.Name);
-
-            var list = games.ToList();
-            return list;
+            return games;
         }
     }
 }

@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['underscore', 'plugins/backbone.marionette', 'modules/schedule', 'plugins/text!templates/scheduleViews.html'], function(_, Marionette, Schedule, html) {
+  define(['app', 'underscore', 'plugins/backbone.marionette', 'modules/schedule', 'plugins/text!templates/scheduleViews.html'], function(app, _, Marionette, Schedule, html) {
     'use strict';
 
     var ListItem, View, itemHtml;
@@ -51,11 +51,32 @@
           this.collection = new Schedule.Collection;
         }
         this.collection.on('reset', this.render, this);
+        this.collection.on('filterSet', this.showTeamFilter, this);
         if (creating) {
           return this.collection.fetch();
         } else {
           return this.render();
         }
+      };
+
+      View.prototype.showCollection = function() {
+        var ItemView, items,
+          _this = this;
+        ItemView = this.getItemView();
+        items = this.collection.filteredItems();
+        return _.each(items, function(item, index) {
+          return _this.addItemView(item, ItemView, index);
+        });
+      };
+
+      View.prototype.showTeamFilter = function(team) {
+        var item, name;
+        item = this.collection.filteredItems()[0];
+        if (!item) {
+          return;
+        }
+        name = team ? item.get('Home').Id === team ? item.get('Home').Name : item.get('Visitor').Name : 'All Teams';
+        return $('#filter .dropdown > a').text(name);
       };
 
       return View;

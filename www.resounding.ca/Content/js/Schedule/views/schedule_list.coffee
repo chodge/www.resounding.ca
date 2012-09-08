@@ -1,9 +1,10 @@
 define [
+	'app',
 	'underscore',
 	'plugins/backbone.marionette',
 	'modules/schedule',
 	'plugins/text!templates/scheduleViews.html'
-], (_, Marionette, Schedule, html) ->
+], (app, _, Marionette, Schedule, html) ->
 	'use strict'
 
 	itemHtml = $(html).find('#schedule-list-item').html()
@@ -28,10 +29,33 @@ define [
 		className: 'schedule container-fluid'
 
 		initialize: ->
+			
 			creating = !@collection
 			if creating
 				@collection = new Schedule.Collection
 
-			@collection.on('reset', @render, this)
+			@collection.on 'reset', @render, this
+			@collection.on 'filterSet', @showTeamFilter, this
 
 			if creating then @collection.fetch() else @render()
+
+		showCollection: ->
+			ItemView = @getItemView()
+			items = @collection.filteredItems()
+			_.each items, (item, index) =>
+				@addItemView(item, ItemView, index)
+
+		showTeamFilter: (team) ->
+			item = @collection.filteredItems()[0]
+			if not item then return
+
+			name = 
+			if team
+				if item.get('Home').Id == team 
+					item.get('Home').Name
+				else
+					item.get('Visitor').Name
+			else
+				'All Teams'
+
+			$('#filter .dropdown > a').text(name)

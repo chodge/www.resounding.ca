@@ -15,11 +15,17 @@
       }
 
       Controller.prototype.routes = {
-        '': 'index'
+        '': 'index',
+        'Tournaments/Schedule/Team/*id': 'teamFilter'
       };
 
       Controller.prototype.index = function() {
         return $('#main').html('').append(new ScheduleList().render().el);
+      };
+
+      Controller.prototype.teamFilter = function(id) {
+        $('#filter .dropdown.open').removeClass('open');
+        return app.vent.trigger('filter:team', parseInt(id) || null);
       };
 
       return Controller;
