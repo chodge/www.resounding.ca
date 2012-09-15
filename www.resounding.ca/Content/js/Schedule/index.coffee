@@ -9,7 +9,8 @@ require.config(
 		jquery: '../libs/jquery',
 		underscore: '../libs/underscore',
 		backbone: '../libs/backbone',
-		datejs: '../libs/date'
+		datejs: '../libs/date',
+		fullcalendar: '../plugins/fullcalendar'
 	,
 
 	shim: 
@@ -22,4 +23,7 @@ require.config(
 		,
 		datejs:
 			exports: 'Date'
+		,
+		fullcalendar:
+			exports: '$.fn.fullCalendar'
 );

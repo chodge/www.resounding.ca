@@ -53,7 +53,7 @@
         this.collection.on('reset', this.render, this);
         this.collection.on('filterSet', this.showTeamFilter, this);
         if (options.container) {
-          $(options.container).html('').append(this.el);
+          $(options.container).html('').append(this.$el);
         }
         if (creating) {
           return this.collection.fetch();

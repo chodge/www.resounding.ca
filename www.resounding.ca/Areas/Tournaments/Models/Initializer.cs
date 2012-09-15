@@ -11,7 +11,7 @@ namespace Resounding.Tournaments.Models
         protected override void Seed(TournamentsContext context)
         {
             var dreamTeam = new Team {
-                Name = "1992 Olympic Men's Basketball Team",
+                Name = "Dream Team",
                 HomeField = "Various",
                 Coach = new Coach {
                     Name = "Chuck Daly",
@@ -34,7 +34,7 @@ namespace Resounding.Tournaments.Models
                 }
             };
             var jays = new Team {
-                Name = "1994 Toronto Blue Jays",
+                Name = "Blue Jays",
                 HomeField = "SkyDome",
                 Coach = new Coach {
                     Name = "Cito Gaston",
@@ -55,7 +55,7 @@ namespace Resounding.Tournaments.Models
             };
 
             var yankees = new Team {
-                Name = "1956 New York Yankees",
+                Name = "Yankees",
                 HomeField = "Yankee Stadium",
                 Coach = new Coach {
                     Name = "Casey Stengel",
@@ -75,7 +75,7 @@ namespace Resounding.Tournaments.Models
             };
 
             var oilers = new Team {
-                Name = "1988 Edmonton Oilers",
+                Name = "Oilers",
                 HomeField = "Northlands Coliseum",
                 Coach = new Coach {
                     Name = "Glen Sather",

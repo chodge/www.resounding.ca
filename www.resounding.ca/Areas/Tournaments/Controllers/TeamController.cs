@@ -86,5 +86,14 @@ namespace Resounding.Tournaments.Api
             }
             return true;
         }
+
+        [HttpGet]
+        public ICollection<Team> Basic()
+        {
+            var context = new TournamentsContext();
+            var teams = context.Teams.OrderBy(t => t.Name).ToList();
+            teams.Insert(0, new Team { Id = -1, Name = "All Teams" });
+            return teams;
+        }
     }
 }

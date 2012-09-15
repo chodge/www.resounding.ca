@@ -21,6 +21,12 @@ namespace Resounding.Tournaments
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            context.Routes.MapHttpRoute(
+                name: "TournamentsActionApi",
+                routeTemplate: "Tournaments/api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             context.MapRoute(
                 "Tournaments",
                 "Tournaments/{controller}/{action}",

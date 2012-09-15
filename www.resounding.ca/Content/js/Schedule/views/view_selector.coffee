@@ -9,10 +9,16 @@ define [
 	
 		constructor: (@container) ->
 			app.vent.on 'change:view', @viewChanged, this
-			@viewChanged()
+			view = @viewChanged()
+			return view
 		
 		viewChanged: (view) ->
-			switch (view or 'List').toLowerCase()
-				when 'week' then new Calendar.WeekView(container: @container)
 
-				else new ScheduleList(container: @container)
+			games = app.main.currentView?.collection
+
+			switch (view or 'List').toLowerCase()
+				when 'week' then view = new Calendar.WeekView(collection: games)
+
+				else view = new ScheduleList(container: @container)
+			
+			app.main.show(view)

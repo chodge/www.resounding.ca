@@ -53,6 +53,16 @@ ul.schedule {
     white-space: nowrap;
 }
 
+ul.calendar {
+    width: 90%;
+    list-style: none;
+}
+    ul.calendar li {
+        width: 14.28571428571429%;
+        display: block;
+        float: left;
+        text-align: center;
+    }
 @media (max-width: 767px) {
     .players {
         width: 100%;

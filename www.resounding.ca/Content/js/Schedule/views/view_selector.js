@@ -7,22 +7,28 @@
     return ViewSelector = (function() {
 
       function ViewSelector(container) {
+        var view;
         this.container = container;
         app.vent.on('change:view', this.viewChanged, this);
-        this.viewChanged();
+        view = this.viewChanged();
+        return view;
       }
 
       ViewSelector.prototype.viewChanged = function(view) {
+        var games, _ref;
+        games = (_ref = app.main.currentView) != null ? _ref.collection : void 0;
         switch ((view || 'List').toLowerCase()) {
           case 'week':
-            return new Calendar.WeekView({
-              container: this.container
+            view = new Calendar.WeekView({
+              collection: games
             });
+            break;
           default:
-            return new ScheduleList({
+            view = new ScheduleList({
               container: this.container
             });
         }
+        return app.main.show(view);
       };
 
       return ViewSelector;

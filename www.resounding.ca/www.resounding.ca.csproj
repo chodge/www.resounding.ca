@@ -77,6 +77,7 @@
     <Content Include="Content\css\bootstrap-responsive.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\fullcalendar.css" />
     <Content Include="Content\css\tournament.css" />
     <Content Include="Content\img\box.png" />
     <Content Include="Content\img\canal-route.png" />
@@ -104,6 +105,7 @@
     <Content Include="Content\js\libs\require.js" />
     <Content Include="Content\js\libs\underscore.js" />
     <Content Include="Content\js\plugins\backbone.layoutmanager.js" />
+    <Content Include="Content\js\plugins\fullcalendar.js" />
     <Content Include="Content\js\plugins\text.js" />
     <Content Include="Content\js\require.js" />
     <None Include="Content\js\Schedule\app.coffee" />

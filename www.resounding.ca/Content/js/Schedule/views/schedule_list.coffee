@@ -38,7 +38,7 @@ define [
 			@collection.on 'reset', @render, this
 			@collection.on 'filterSet', @showTeamFilter, this
 
-			if options.container then $(options.container).html('').append(@el)
+			if options.container then $(options.container).html('').append(@$el)
 
 			if creating then @collection.fetch() else @render()
 

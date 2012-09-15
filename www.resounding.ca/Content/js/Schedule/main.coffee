@@ -6,7 +6,13 @@
 ], (app, Backbone, ViewSelector, Toolbar) ->
 
 	app.addInitializer ->
-		new ViewSelector('#main')
-		new Toolbar
+		app.addRegions(
+			main: '#main'
+			toolbar: '#filter'
+		)
+		
+		new ViewSelector(app.main.el)
+		
+		app.toolbar.show new Toolbar
 
 	app.start()
