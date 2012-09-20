@@ -47,6 +47,15 @@ define [
 					memo
 			, [])
 
+		calendarEvents: ->
+			@filteredItems().map (game) ->
+				start = game.get('Date').clone()
+				end = start.clone().addHours(2)
+				event =
+					allDay: false
+					start: start
+					end: end
+					title: "#{game.get('Home').Name} vs #{game.get('Visitor').Name}"
 
 	Schedule = _.extend(app.module(),
 		Collection: collection

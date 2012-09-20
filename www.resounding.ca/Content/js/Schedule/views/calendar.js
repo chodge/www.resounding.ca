@@ -5,10 +5,47 @@
   define(['app', 'underscore', 'backbone', 'plugins/backbone.marionette', 'plugins/text!templates/scheduleViews.html', 'fullcalendar'], function(app, _, Backbone, Marionette, html) {
     'use strict';
 
-    var $html, DayView, WeekView, dayTemplate, weekTemplate;
-    $html = $(html);
-    dayTemplate = $html.find('#day-view').html();
-    weekTemplate = $(html).find('#week-view').html();
+    var CalendarView, DayView, MonthView, WeekView;
+    CalendarView = (function(_super) {
+
+      __extends(CalendarView, _super);
+
+      function CalendarView() {
+        return CalendarView.__super__.constructor.apply(this, arguments);
+      }
+
+      CalendarView.prototype.className = 'calendar';
+
+      CalendarView.prototype.initialize = function() {
+        var render;
+        render = _.bind(this.render, this, true);
+        return this.on('show', render, this);
+      };
+
+      CalendarView.prototype.render = function(force) {
+        var cal, opts,
+          _this = this;
+        if (force) {
+          opts = {
+            defaultView: this.format,
+            events: this.collection.calendarEvents(),
+            timeFormat: 'h:mm TT',
+            viewDisplay: function() {
+              return _this.collection.CalendarStartDate = view.start;
+            }
+          };
+          cal = this.$el.fullCalendar(opts);
+          if (this.collection.CalendarStartDate) {
+            cal.data('fullCalendar').gotoDate(this.collection.CalendarStartDate);
+            cal.data('fullCalendar').render();
+          }
+        }
+        return this;
+      };
+
+      return CalendarView;
+
+    })(Marionette.ItemView);
     DayView = (function(_super) {
 
       __extends(DayView, _super);
@@ -17,13 +54,11 @@
         return DayView.__super__.constructor.apply(this, arguments);
       }
 
-      DayView.prototype.tagName = 'li';
-
-      DayView.prototype.template = _.template(dayTemplate);
+      DayView.prototype.format = 'basicDay';
 
       return DayView;
 
-    })(Marionette.ItemView);
+    })(CalendarView);
     WeekView = (function(_super) {
 
       __extends(WeekView, _super);
@@ -32,36 +67,28 @@
         return WeekView.__super__.constructor.apply(this, arguments);
       }
 
-      WeekView.prototype.className = 'calendar';
-
-      WeekView.prototype.itemView = DayView;
-
-      WeekView.prototype.initialize = function() {
-        return this.on('show', this.render, this);
-      };
-
-      WeekView.prototype.render = function() {
-        var cal;
-        cal = this.$el.fullCalendar({
-          defaultView: 'basicWeek',
-          events: _.map(this.collection.filteredItems(), function(game) {
-            var date, event;
-            date = game.get('Date');
-            return event = {
-              start: date,
-              end: date.addHours(2),
-              title: game.get('Home').Name + ' vs ' + game.get('Visitor').Name
-            };
-          })
-        });
-        return this;
-      };
+      WeekView.prototype.format = 'basicWeek';
 
       return WeekView;
 
-    })(Marionette.ItemView);
+    })(CalendarView);
+    MonthView = (function(_super) {
+
+      __extends(MonthView, _super);
+
+      function MonthView() {
+        return MonthView.__super__.constructor.apply(this, arguments);
+      }
+
+      MonthView.prototype.format = 'month';
+
+      return MonthView;
+
+    })(CalendarView);
     return {
-      WeekView: WeekView
+      WeekView: WeekView,
+      MonthView: MonthView,
+      DayView: DayView
     };
   });
 

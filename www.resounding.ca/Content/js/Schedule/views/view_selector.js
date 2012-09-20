@@ -23,6 +23,16 @@
               collection: games
             });
             break;
+          case 'month':
+            view = new Calendar.MonthView({
+              collection: games
+            });
+            break;
+          case 'day':
+            view = new Calendar.DayView({
+              collection: games
+            });
+            break;
           default:
             view = new ScheduleList({
               container: this.container

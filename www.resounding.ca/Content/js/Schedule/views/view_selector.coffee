@@ -17,8 +17,9 @@ define [
 			games = app.main.currentView?.collection
 
 			switch (view or 'List').toLowerCase()
-				when 'week' then view = new Calendar.WeekView(collection: games)
-
-				else view = new ScheduleList(container: @container)
+				when 'week' then view = new Calendar.WeekView collection: games
+				when 'month' then view = new Calendar.MonthView collection: games
+				when 'day' then view = new Calendar.DayView collection: games
+				else view = new ScheduleList container: @container
 			
 			app.main.show(view)

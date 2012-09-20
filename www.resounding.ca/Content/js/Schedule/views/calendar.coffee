@@ -8,37 +8,44 @@ define [
 ], (app, _, Backbone, Marionette, html) ->
 	'use strict'
 
-	$html = $(html)
-	dayTemplate = $html.find('#day-view').html()
-	weekTemplate = $(html).find('#week-view').html()
-
-	class DayView extends Marionette.ItemView
-
-		tagName: 'li'
-
-		template: _.template(dayTemplate)
-
-
-	class WeekView extends Marionette.ItemView
+	class CalendarView extends Marionette.ItemView
 
 		className: 'calendar'
 
-		itemView: DayView
-
 		initialize: ->
-			@on('show', @render, this)
+			render = _.bind @render, this, true
+			@on('show', render, this)
+			
+		render: (force) ->
+			if force
+				opts = 
+					defaultView: @format
+					events: @collection.calendarEvents()
+					timeFormat: 'h:mm TT'
+					viewDisplay: =>
+						@collection.CalendarStartDate = view.start
 
-		render: ->
-			cal = @$el.fullCalendar(
-				defaultView: 'basicWeek'
-				events: _.map(@collection.filteredItems(), (game) ->
-					date = game.get('Date')
-					event =
-						start: date
-						end: date.addHours(2)
-						title: game.get('Home').Name + ' vs ' + game.get('Visitor').Name
-				)
-			)
+				cal = @$el.fullCalendar opts
+
+				if @collection.CalendarStartDate
+					cal.data('fullCalendar').gotoDate(@collection.CalendarStartDate)
+					cal.data('fullCalendar').render()
+			
 			this
 
+	class DayView extends CalendarView
+
+		format: 'basicDay'
+
+	class WeekView extends CalendarView
+
+		format: 'basicWeek'
+
+	class MonthView extends CalendarView
+
+		format: 'month'
+
+
 	WeekView: WeekView
+	MonthView: MonthView
+	DayView: DayView

@@ -49,6 +49,19 @@
           }
           return memo;
         }, []);
+      },
+      calendarEvents: function() {
+        return this.filteredItems().map(function(game) {
+          var end, event, start;
+          start = game.get('Date').clone();
+          end = start.clone().addHours(2);
+          return event = {
+            allDay: false,
+            start: start,
+            end: end,
+            title: "" + (game.get('Home').Name) + " vs " + (game.get('Visitor').Name)
+          };
+        });
       }
     });
     return Schedule = _.extend(app.module(), {
