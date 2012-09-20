@@ -29,7 +29,6 @@ define [
 			@on('show', @render, this)
 
 		render: ->
-			debugger
 			cal = @$el.fullCalendar(
 				defaultView: 'basicWeek'
 				events: _.map(@collection.filteredItems(), (game) ->

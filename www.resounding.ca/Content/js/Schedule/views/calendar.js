@@ -41,7 +41,6 @@
       };
 
       WeekView.prototype.render = function() {
-        debugger;
         var cal;
         cal = this.$el.fullCalendar({
           defaultView: 'basicWeek',

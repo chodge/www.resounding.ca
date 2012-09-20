@@ -80,6 +80,8 @@
     <Content Include="Content\css\fullcalendar.css" />
     <Content Include="Content\css\tournament.css" />
     <Content Include="Content\img\box.png" />
+    <Content Include="Content\img\canal-route-med.png" />
+    <Content Include="Content\img\canal-route-sm.png" />
     <Content Include="Content\img\canal-route.png" />
     <Content Include="Content\img\elements.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
