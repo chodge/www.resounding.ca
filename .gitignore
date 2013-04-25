@@ -1,8 +1,0 @@
-bin
-obj
-*.suo
-*.user
-*.cache
-*.Publish.xml
-*.sdf
-*.ldf
