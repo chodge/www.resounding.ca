@@ -1,6 +1,6 @@
 {
   "name": "www.resounding.ca",
-  "version": "0.0.2-1",
+  "version": "0.0.2-2",
   "description": "The resounding.ca website",
   "main": "index.js",
   "scripts": {
@@ -13,13 +13,15 @@
   "author": "Cliffe Hodgkinson",
   "license": "BSD",
   "dependencies": {
-    "connect": "2.7.6"
+    "express": "3.2.0",
+    "nodemailer": "0.4.1"
   },
   "subdomain": "resounding",
   "domains": [
     "resounding.ca",
     "www.resounding.ca",
-    "apps.resounding.ca"
+    "apps.resounding.ca",
+    "work.resounding.ca"
   ],
   "engines": {
     "node": "0.8.x"
