@@ -16,6 +16,11 @@
     "connect": "2.7.6"
   },
   "subdomain": "resounding",
+  "domains": [
+    "resounding.ca",
+    "www.resounding.ca",
+    "apps.resounding.ca"
+  ],
   "engines": {
     "node": "0.8.x"
   }
