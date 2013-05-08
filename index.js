@@ -34,4 +34,9 @@ app.post('/work/email', function(req, res) {
 	res.end();
 });
 
+app.get('/app.manifest', function(req, res) {
+	res.set('Content-Type', 'text/cache-manifest');
+	res.sendfile(__dirname + '/app.manifest');
+});
+
 app.listen(80);
