@@ -1,8 +1,8 @@
 var express = require('express'),
+	compress = require('compression')(),
 	app = express()
-	.use(express.compress())
-	.use(express.static(__dirname + '/public'))
-	.use(express.urlencoded());
+	.use(compress)
+	.use(express.static(__dirname + '/public'));
 
 app.get('/app.manifest', function(req, res) {
 	res.set('Content-Type', 'text/cache-manifest');
