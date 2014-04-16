@@ -18,12 +18,13 @@
   },
   "subdomain": "resounding",
   "domains": [
+    "www-resounding.azurewebsites.net",
     "resounding.ca",
     "www.resounding.ca",
     "apps.resounding.ca",
     "work.resounding.ca"
   ],
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   }
 }
