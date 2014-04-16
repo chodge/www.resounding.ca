@@ -10,3 +10,5 @@ app.get('/app.manifest', function(req, res) {
 });
 
 app.listen(process.env.port || 80);
+
+module.exports = app;
