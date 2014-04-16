@@ -39,4 +39,4 @@ app.get('/app.manifest', function(req, res) {
 	res.sendfile(__dirname + '/app.manifest');
 });
 
-app.listen(80);
+app.listen(process.env.port || 80);
