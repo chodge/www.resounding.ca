@@ -1,0 +1,9 @@
+{
+  "name": "www-resounding-ca",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "skel": "~2.1.0",
+    "fontawesome": "~4.2.0"
+  }
+}
