@@ -242,7 +242,7 @@
 			height: 20em;
 		}
 		
-			#me .pic
+			.panel .pic
 			{
 				display: block;
 				position: absolute;
@@ -252,14 +252,14 @@
 				text-decoration: none;
 			}
 			
-				#me .pic img
+				.panel .pic img
 				{
 					position: relative;
 					display: block;
 					height: 100%;
 				}
 			
-				#me .pic .arrow
+				.panel .pic .arrow
 				{
 					display: block;
 					position: absolute;
@@ -282,20 +282,20 @@
 					transition: width .15s ease-in-out, padding-right .15s ease-in-out;
 				}
 
-					#me .pic .arrow:before
+					.panel .pic .arrow:before
 					{
 						position: relative;
 						padding-right: 0;
 						top: 0.125em;
 					}
 			
-					#me .pic .arrow span
+					.panel .pic .arrow span
 					{
 						display: block;
 						text-indent: -9999px;
 					}
 				
-					#me .pic:hover .arrow
+					.panel .pic:hover .arrow
 					{
 						width: 3em;
 						padding-right: 0.25em;

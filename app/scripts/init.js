@@ -51,7 +51,8 @@
 
 		$window.on('load', function() {
 
-			var	$body = $('body'),
+			var	$html = $('html'),
+				$body = $('body'),
 				$main = $('#main'),
 				$panels = $main.find('.panel'),
 				$hbw = $('html,body,window'),
@@ -65,6 +66,8 @@
 				firstPanelId = null,
 				isLocked = false,
 				hash = window.location.hash.substring(1);
+
+			$html.removeClass('no-js');
 
 			if (skel.vars.isTouch) {
 

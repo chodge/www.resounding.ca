@@ -8,38 +8,54 @@
 /* Wrapper                                                                       */
 /*********************************************************************************/
 			
-	#wrapper
+	.no-js #wrapper
 	{
 		opacity: 1.0;
 	}
 
 /*********************************************************************************/
+/* Icons                                                                         */
+/*********************************************************************************/
+
+		.no-js .icon.fa-linkedin {
+			background-color: transparent;			
+		}
+
+		.no-js #nav a.icon.fa-linkedin span {
+			background-color: #287bbc;			
+		}
+
+		.no-js .row > * {
+			padding-left: 25px;
+		}
+
+/*********************************************************************************/
 /* Nav                                                                           */
 /*********************************************************************************/
 	
-	#nav
+	.no-js #nav
 	{
 		margin-top: 4em;
 	}
 	
-		#nav a
+		.no-js #nav a
 		{
 			opacity: 1.0;
 		}
 
-			#nav a:before,
-			#nav a:after
+			.no-js #nav a:before,
+			.no-js #nav a:after
 			{
 				display: none;
 			}
 		
-			#nav a span
+			.no-js #nav a span
 			{
 				top: 0;
 				opacity: 1.0;
 			}
 			
-				#nav a span:after
+				.no-js #nav a span:after
 				{
 					display: none;
 				}
@@ -48,13 +64,13 @@
 /* Panels                                                                        */
 /*********************************************************************************/
 
-	#main
+	.no-js #main
 	{
 		background: none;
 		box-shadow: none;
 	}
 
-	.panel
+	.no-js .panel
 	{
 		position: relative;
 		background: #ffffff;
